@@ -1,8 +1,6 @@
 # Sistema de Estoque da Wind 3.0
 
-<p align="center">
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
-</p>
 
 Para roda esse projeto na sua máquina, por favor digite:
 
