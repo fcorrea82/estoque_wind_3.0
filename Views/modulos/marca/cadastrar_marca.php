@@ -1,107 +1,47 @@
-<?php
-
-session_start();
-
-//verifica se o usuario esta logado
-if(!isset($_SESSION["usuario_logado"]))
-    header("Location: login.php");
-
-try {
-
-    if(isset($_GET['salvar']))
-    {
-
-      include '../../DAO/MarcaDAO.php';
-
-      $marca_dao = new MarcaDAO();
-
-      $dados_para_salvar= array(
-        'descricao' => $_POST["descricao"]
-      );
-
-      if(isset($_POST['id'])){
-
-      $dados_para_salvar['id'] = $_POST["id"];
-      
-      $marca_dao->update($dados_para_salvar);
-
-      echo "Atualizado";
-
-     }else {
-        $marca_dao->insert($dados_para_salvar);
-        echo "Inserido.";
-        }
-
-    }
-
-    if(isset($_GET['excluir']))
-    {
-        include '../../DAO/MarcaDAO.php';
-
-        $marca_dao = new MarcaDAO();
-
-        $marca_dao->delete($_GET['id']);
-
-        header("Location: listar_marca.php");
-
-    }
-
-    if(isset($_GET['id']))
-    {
-        include '../../DAO/MarcaDAO.php';
-
-        $marca_dao = new MarcaDAO();
-
-        $dados_marca = $marca_dao->getById($_GET['id']);
-
-    }
-
-
-
-
-} catch(Exception $e){
-    echo $e->getMessage();
-}
-
-?>
-
-
 <html lang="pt-br">
-    <head>
-        
-        <title>CADASTRAR MARCA</title>        
-        <meta charset="utf-8" />
-        <?php include '../../includes/css_config.php' ?>
-    </head>
-    <body>
-        <div id="global">
-         
-        <?php include '../../includes/cabecalho.php' ?>
 
-               <main>
+<head>
+    <meta charset="utf-8" />
+    <title>CADASTRAR MARCA</title>
+    <?php include PATH_VIEW . 'includes/css_config.php' ?>
+</head>
 
-                <form method="post" action="cadastrar_marca.php?salvar=true">
+<body>
+    <div id="global">
 
-                   <label>Descricao (Nome) da Marca:
-                    <input name="descricao" value="<?= isset($dados_marca) ? $dados_marca->descricao : "" ?>" type="text" />
-                   </label>
+        <?php include PATH_VIEW . 'includes/cabecalho.php' ?>
 
-                    <?php if(isset($dados_marca)): ?>
-                        <input name="id" type="hidden" value="<?= $dados_marca->id ?>" />
-                    
+        <main class="container mt-4">
 
-                    <a href="cadastrar_marca.php?excluir=true&id=<?= $dados_marca->id ?>">
+            <h4>Cadastro de Marcas </h4>
+
+            <form method="post" action="/marca/salvar">
+
+                <div class="form-group">
+                    <label>Descricao (Nome) da marca:
+                        <input name="descricao" class="form-control" value="<?= isset($dados_marca) ? $dados_marca->descricao : "" ?>" type="text" />
+                    </label>
+                </div>
+
+                <?php if (isset($dados_marca)) : ?>
+                    <input name="id" type="hidden" value="<?= $dados_marca->id ?>" />
+
+
+                    <a href="/marca/excluir?excluir=true&id=<?= $dados_marca->id ?>" class="btn btn-outline-danger">
                         Excluir
                     </a>
-                    <?php endif; ?>
-                    <button type="submit">Salvar</button>
-                </form>
-            </main>
+                <?php endif; ?>
 
-        
-             
-        </div>
-        <?php include '../../includes/rodape.php' ?>
-        <?php include '../../includes/js_config.php' ?>
-    </body>
+                <button type="submit" class="btn btn-outline-success">Salvar</button>
+                <a href="/marca/listar" type="btn" class="btn btn-outline-primary">Voltar</a>
+            </form>
+        </main>
+
+
+
+    </div>
+    <?php include PATH_VIEW . 'includes/rodape.php' ?>
+    <?php include PATH_VIEW . 'includes/js_config.php' ?>
+</body>
+
 </html>
