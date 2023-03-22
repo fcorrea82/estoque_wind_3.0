@@ -20,3 +20,7 @@ Instalar o Apache com PHP + MySQL
 - `PHP 8`
 - `MySQL`
 - `Xampp`
+
+# Change Log
+
+- `Ver` https://github.com/fcorrea82/estoque_wind_3.0/blob/master/changelog.md
