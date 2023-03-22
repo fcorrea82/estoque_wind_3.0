@@ -4,7 +4,9 @@
 
 # Introdução
 
-Para roda esse projeto na sua máquina, por favor digite:
+Sistema específico para controle de inventário da empresa Restoque S.A.
+
+# Instruções
 
 ```
 Instalar o Apache com PHP + MySQL
