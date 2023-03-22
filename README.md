@@ -23,5 +23,4 @@ Instalar o Apache com PHP + MySQL
 
 # Change Log
 
-- [![Versão 3.0.0](https://github.com/fcorrea82/estoque_wind_3.0/blob/master/changelog.md)]
-  [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/PHPMailer/PHPMailer/badge)]
+- [[Versão 3.0.0](https://github.com/fcorrea82/estoque_wind_3.0/blob/master/changelog.md)]
