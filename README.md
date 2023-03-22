@@ -8,15 +8,14 @@ Sistema específico para controle de inventário da empresa Restoque S.A.
 
 # Instruções
 
-```
-Instalar o Apache com PHP + MySQL
-```
+- Instalar o Xampp com Apache + PHP + MySQL
+- Realizar a importação do banco de dados dentro do PHPMyAdmin
 
-# :hammer: Funcionalidades do projeto
+# Funcionalidades do projeto
 
 - `Funcionalidade 1`: projeto com padrão MVC
 
-## ✔️ Técnicas e tecnologias utilizadas
+# Técnicas e tecnologias utilizadas
 
 - `PHP 8`
 - `MySQL`
