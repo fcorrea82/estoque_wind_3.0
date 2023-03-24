@@ -32,6 +32,14 @@ try {
          LoginController::sair();
          break;
 
+      case '/esqueci-a-senha':
+         LoginController::esqueciSenha();
+         break;
+
+      case '/enviar-nova-senha':
+         LoginController::enviarNovaSenha();
+         break;
+
          //Rotas para trabalhar com produtos.
       case '/produto/listar':
          ProdutoController::listarProdutos();

@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
-    <title>Login</title>
+    <title>Esqueci a Senha</title>
 </head>
 
 <body>
@@ -33,14 +33,19 @@
                     <img src="imagens/logowindti1.png" alt="IMG">
                 </div>
 
-                <form class="login100-form validate-form" method="POST" action="/autenticar">
+                <form class="login100-form validate-form" method="POST" action="/enviar-nova-senha">
                     <span class="login100-form-title">
                         Controle de Estoque 3.0
                     </span>
+                    <?php if (isset($retorno)) : ?>
+                        <div class="alert alert-primary" role="alert">
+                            <?= $retorno ?>
+                        </div>
+                    <?php endif ?>
 
                     <div class="wrap-input100 validate-input">
 
-                        <input class="input100" type="text" name="user" placeholder="Digite o seu usuario">
+                        <input class="input100" type="email" name="email" placeholder="Digite o seu email">
 
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
@@ -48,10 +53,10 @@
                         </span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                    <!-- <div class="wrap-input100 validate-input" data-validate="Password is required">
 
 
-                        <input class="input100" type="password" name="pass" placeholder="Digite sua senha">
+                        <input class="input100" type="password" name="pass" placeholder="Digite sua senha"> 
 
 
 
@@ -59,11 +64,11 @@
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
-                    </div>
+                    </div> -->
 
                     <div class="container-login100-form-btn">
                         <button class="login100-form-btn">
-                            Entrar
+                            Enviar Nova Senha
                         </button>
                     </div>
 
@@ -71,8 +76,8 @@
                         <span class="txt1">
 
                         </span>
-                        <a class="txt2" href="/esqueci-a-senha">
-                            Esqueci minha senha
+                        <a class="txt2 btn btn-outline-success" href="/login">
+                            Voltar
                         </a>
                     </div>
 

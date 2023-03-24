@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 use App\DAO\LoginDAO;
+use Exception;
 
 class LoginController extends Controller
 {
@@ -11,6 +12,39 @@ class LoginController extends Controller
     public static function login()
     {
         include PATH_VIEW . 'login.php';
+    }
+
+    public static function esqueciSenha()
+    {
+        include PATH_VIEW . 'esqueci-senha.php';
+    }
+
+    public static function enviarNovaSenha()
+    {
+        try {
+
+            $nova_senha = uniqid();
+            $email = $_POST['email'];
+
+            $login_dao = new LoginDAO();
+            $login_dao->setNewPassWordForUserByEmail($email, $nova_senha);
+
+            $assunto = "Nova Senha do Sistema";
+            $mensagem = "Sua nova senha é: " . $nova_senha;
+
+            $retorno = "Caso seu email esteja em nosso sistema, você acaba de receber uma nova senha.";
+
+            if (!mail($email, $assunto, $mensagem)) {
+
+                $teste = "Senha gerada: " . $nova_senha;
+                throw new Exception("Desculpe, ocorreu um erro ao enviar o email. </br> " . $teste);
+            }
+        } catch (Exception $e) {
+
+            $retorno = $e->getMessage();
+        }
+
+        include PATH_VIEW . "esqueci-senha.php";
     }
 
     public static function autenticar()
