@@ -1,5 +1,13 @@
 <?php
 
+use App\Controller\{
+   DashboardController,
+   LoginController,
+   ProdutoController,
+   CategoriaController,
+   MarcaController
+};
+
 
 try {
 

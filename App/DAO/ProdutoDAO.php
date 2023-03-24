@@ -1,5 +1,7 @@
 <?php
 
+namespace App\DAO;
+
 /**
  * Classe que realiza busca de dados no banco para fornecer dados para o CRUD
  */
@@ -36,15 +38,12 @@ class ProdutoDAO extends DAO
     public function getAllRows()
     {
 
-        $stmt = $this->conexao->prepare(
-            "SELECT produto.id, produto.descricao, produto.preco, categoria.descricao as categoria, marca.descricao as marca
+        $stmt = $this->conexao->prepare("SELECT produto.id, produto.descricao, produto.preco, categoria.descricao as categoria, marca.descricao as marca
             FROM produto
             INNER JOIN categoria
             ON produto.id_categoria = categoria.id
             INNER JOIN marca
-            ON produto.id_marca = marca.id"
-
-        );
+            ON produto.id_marca = marca.id");
         $stmt->execute();
 
         $arr_produtos = array();

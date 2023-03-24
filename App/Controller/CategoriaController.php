@@ -1,11 +1,16 @@
 <?php
 
-class CategoriaController extends Controller {
+namespace App\Controller;
+
+use App\DAO\CategoriaDAO;
+
+class CategoriaController extends Controller
+{
 
     public static function cadastrar()
     {
         parent::isProtected();
-        include 'Views/modulos/categoria/cadastrar_categoria.php';
+        include PATH_VIEW . 'modulos/categoria/cadastrar_categoria.php';
     }
 
     public static function salvar()
@@ -23,7 +28,6 @@ class CategoriaController extends Controller {
             $dados_para_salvar['id'] = $_POST["id"];
 
             $categoria_dao->update($dados_para_salvar);
-            
         } else {
             $categoria_dao->insert($dados_para_salvar);
 
@@ -36,38 +40,36 @@ class CategoriaController extends Controller {
     public static function excluir()
     {
         parent::isProtected();
-        if(isset($_GET['id']))
-        {
-           $categoria_dao = new CategoriaDAO();
-           $categoria_dao->delete($_GET['id']);
+        if (isset($_GET['id'])) {
+            $categoria_dao = new CategoriaDAO();
+            $categoria_dao->delete($_GET['id']);
 
-           header("Location: /categoria/listar");
+            header("Location: /categoria/listar");
         } else
             header("Location: /categoria/listar");
     }
 
-     //Index da Página
-     public static function listarCategorias()
-     {
-        parent::isProtected();
-         $categoria_dao = new CategoriaDAO();
-         $listar_categorias = $categoria_dao->getAllRows();
-         $total_categorias = count($listar_categorias);
- 
-         include 'Views/modulos/categoria/listar_categorias.php';
-     }
-
-     public static function ver()
+    //Index da Página
+    public static function listarCategorias()
     {
         parent::isProtected();
-        
-        if(isset($_GET['id']))
-        {
-            
+        $categoria_dao = new CategoriaDAO();
+        $listar_categorias = $categoria_dao->getAllRows();
+        $total_categorias = count($listar_categorias);
+
+        include PATH_VIEW . 'modulos/categoria/listar_categorias.php';
+    }
+
+    public static function ver()
+    {
+        parent::isProtected();
+
+        if (isset($_GET['id'])) {
+
             $categoria_dao = new CategoriaDAO();
             $dados_categoria = $categoria_dao->getById($_GET['id']);
 
-            include 'Views/modulos/categoria/cadastrar_categoria.php';
+            include PATH_VIEW . 'modulos/categoria/cadastrar_categoria.php';
         } else
             header("Location: /categoria/listar");
     }

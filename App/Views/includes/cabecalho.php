@@ -11,7 +11,7 @@
         <div class="col-sm">
             <fieldset>
                 <legend>Dados do usuário</legend>
-                Bem-vindo <strong> <?= LoginController::getNameOfUser(); ?> </strong> <a class="btn btn-dark" href="/sair">Sair</a>
+                Bem-vindo <strong> <?= App\Controller\LoginController::getNameOfUser(); ?> </strong> <a class="btn btn-dark" href="/sair">Sair</a>
 
             </fieldset>
         </div>
@@ -80,31 +80,31 @@
         <nav class="navbar navbar-light bg-light navbar-expand-sm mb-3">
             <!--<a class="navbar-brand">Navbar</a> -->
 
-          <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+            <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="navbar-toggler-icon"></span>
             </button> -->
 
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                <a href="/" class="nav-link" tabindex="0">
-                            Inicio
-                        </a>
+                    <a href="/" class="nav-link" tabindex="0">
+                        Inicio
+                    </a>
                     <li class="nav-item dropdown">
-                         
+
                         <a class="nav-link dropdown-toggle" tabindex="0" data-toggle="dropdown" data-submenu>
                             Cadastro
                         </a>
 
                         <div class="dropdown-menu">
-                            
-                       
+
+
 
 
                             <div class="dropdown dropright dropdown-submenu">
                                 <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Armazenamento</button>
 
                                 <div class="dropdown-menu">
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">HD's</button>
@@ -123,7 +123,7 @@
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
                                     </div>
-  
+
                                 </div>
                             </div>
 
@@ -131,7 +131,7 @@
                                 <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Automação Comercial</button>
 
                                 <div class="dropdown-menu">
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Pin Pads</button>
@@ -150,7 +150,7 @@
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
                                     </div>
-  
+
                                 </div>
                             </div>
 
@@ -158,7 +158,7 @@
                                 <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Computador</button>
 
                                 <div class="dropdown-menu">
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">PC - Micros</button>
@@ -168,7 +168,7 @@
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
                                     </div>
-  
+
                                 </div>
                             </div>
 
@@ -176,7 +176,7 @@
                                 <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Energia</button>
 
                                 <div class="dropdown-menu">
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Estabilizadores</button>
@@ -204,7 +204,7 @@
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
                                     </div>
-  
+
                                 </div>
                             </div>
 
@@ -212,7 +212,7 @@
                                 <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Impressoras</button>
 
                                 <div class="dropdown-menu">
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Lasers</button>
@@ -241,7 +241,7 @@
                                         </div>
                                     </div>
 
-  
+
                                 </div>
                             </div>
 
@@ -249,7 +249,7 @@
                                 <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Lojas</button>
 
                                 <div class="dropdown-menu">
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Loja</button>
@@ -259,7 +259,7 @@
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
                                     </div>
-  
+
                                 </div>
                             </div>
 
@@ -268,7 +268,7 @@
 
                                 <div class="dropdown-menu">
 
-                                <div class="dropdown dropright dropdown-submenu">
+                                    <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Aparelho de Som</button>
 
                                         <div class="dropdown-menu">
@@ -294,7 +294,7 @@
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
                                     </div>
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Câmeras CFTV</button>
@@ -313,7 +313,7 @@
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
                                     </div>
-  
+
                                 </div>
                             </div>
 
@@ -322,7 +322,7 @@
 
                                 <div class="dropdown-menu">
 
-                                <div class="dropdown dropright dropdown-submenu">
+                                    <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Produto</button>
 
                                         <div class="dropdown-menu">
@@ -348,7 +348,7 @@
                                             <button class="dropdown-item" type="button"><a href="/categoria/listar">Listar</a></button>
                                         </div>
                                     </div>
-                                    </div>
+                                </div>
 
                             </div>
 
@@ -356,7 +356,7 @@
                                 <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Periféricos</button>
 
                                 <div class="dropdown-menu">
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Monitores</button>
@@ -391,7 +391,7 @@
                                             <button class="dropdown-item" type="button"><a href="#">Cadastrar</a></button>
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
-    
+
                                     </div>
 
                                     <div class="dropdown dropright dropdown-submenu">
@@ -400,23 +400,23 @@
                                             <button class="dropdown-item" type="button"><a href="#">Cadastrar</a></button>
                                             <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
                                         </div>
-    
+
                                     </div>
 
 
-  
+
                                 </div>
                             </div>
 
-                        
 
-                            
+
+
 
                             <div class="dropdown dropright dropdown-submenu">
                                 <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Outros</button>
 
                                 <div class="dropdown-menu">
-                                    
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Coletor de Dados</button>
@@ -436,14 +436,14 @@
                                         </div>
                                     </div>
 
-                                    
-
-                                    
-
-                                    
 
 
-  
+
+
+
+
+
+
                                 </div>
                             </div>
                             <!--
@@ -454,34 +454,48 @@
                         </div>
                     </li>
 
-                <!-- segundo menu inicio -->
+                    <!-- segundo menu inicio -->
 
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" tabindex="0" data-toggle="dropdown" data-submenu>
-                            Relatórios
-                        </a>
-
-                        <div class="dropdown-menu">
-                            <div class="dropdown dropright dropdown-submenu">
-                                <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Action</button>
+                    <div class="collapse navbar-collapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" tabindex="0" data-toggle="dropdown" data-submenu>
+                                    Relatórios
+                                </a>
 
                                 <div class="dropdown-menu">
-                                    <button class="dropdown-item" type="button">Sub action</button>
-
                                     <div class="dropdown dropright dropdown-submenu">
-                                        <button class="dropdown-item dropdown-toggle" type="button">Another sub action</button>
+                                        <button class="dropdown-item dropdown-toggle" type="button" data-toggle="dropdown">Action</button>
 
                                         <div class="dropdown-menu">
                                             <button class="dropdown-item" type="button">Sub action</button>
-                                            <button class="dropdown-item" type="button">Another sub action</button>
+
+                                            <div class="dropdown dropright dropdown-submenu">
+                                                <button class="dropdown-item dropdown-toggle" type="button">Another sub action</button>
+
+                                                <div class="dropdown-menu">
+                                                    <button class="dropdown-item" type="button">Sub action</button>
+                                                    <button class="dropdown-item" type="button">Another sub action</button>
+                                                    <button class="dropdown-item" type="button">Something else here</button>
+                                                </div>
+                                            </div>
+
                                             <button class="dropdown-item" type="button">Something else here</button>
+                                            <button class="dropdown-item" type="button" disabled>Disabled action</button>
+
+                                            <div class="dropdown dropright dropdown-submenu">
+                                                <button class="dropdown-item dropdown-toggle" type="button">Another action</button>
+
+                                                <div class="dropdown-menu">
+                                                    <button class="dropdown-item" type="button">Sub action</button>
+                                                    <button class="dropdown-item" type="button">Another sub action</button>
+                                                    <button class="dropdown-item" type="button">Something else here</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                    <button class="dropdown-item" type="button" disabled>Disabled action</button>
+
 
                                     <div class="dropdown dropright dropdown-submenu">
                                         <button class="dropdown-item dropdown-toggle" type="button">Another action</button>
@@ -492,35 +506,21 @@
                                             <button class="dropdown-item" type="button">Something else here</button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
 
-
-
-                            <div class="dropdown dropright dropdown-submenu">
-                                <button class="dropdown-item dropdown-toggle" type="button">Another action</button>
-
-                                <div class="dropdown-menu">
-                                    <button class="dropdown-item" type="button">Sub action</button>
-                                    <button class="dropdown-item" type="button">Another sub action</button>
                                     <button class="dropdown-item" type="button">Something else here</button>
+                                    <div class="dropdown-divider"></div>
+                                    <button class="dropdown-item" type="button">Separated link</button>
+
                                 </div>
-                            </div>
-
-                            <button class="dropdown-item" type="button">Something else here</button>
-                            <div class="dropdown-divider"></div>
-                            <button class="dropdown-item" type="button">Separated link</button>
-
-                        </div>
-                    </li>
+                            </li>
 
 
-                </ul>
+                        </ul>
 
 
-            </div>
+                    </div>
 
-            <!-- segundo menu fim -->
+                    <!-- segundo menu fim -->
 
 
                 </ul>
@@ -528,7 +528,7 @@
 
             </div>
 
-            
+
 
         </nav>
 

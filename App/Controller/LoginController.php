@@ -1,10 +1,16 @@
 <?php
 
-class LoginController extends Controller {
+
+namespace App\Controller;
+
+use App\DAO\LoginDAO;
+
+class LoginController extends Controller
+{
 
     public static function login()
     {
-       include 'Views/login.php';
+        include PATH_VIEW . 'login.php';
     }
 
     public static function autenticar()
@@ -15,14 +21,14 @@ class LoginController extends Controller {
         $login_dao = new LoginDAO();
         $resultado = $login_dao->getUserByUserAndPass($usuario, $senha);
 
-        if($resultado !== false)
-        {
-            $_SESSION["usuario_logado"] = array('id' => $resultado->id, 
-                                                'nome' => $resultado->nome) ;
+        if ($resultado !== false) {
+            $_SESSION["usuario_logado"] = array(
+                'id' => $resultado->id,
+                'nome' => $resultado->nome
+            );
             header("Location: /");
-        }else
+        } else
             header("Location: /login?fail=true");
-        
     }
 
     public static function sair()
@@ -36,5 +42,4 @@ class LoginController extends Controller {
     {
         return $_SESSION['usuario_logado']['nome'];
     }
-
 }
