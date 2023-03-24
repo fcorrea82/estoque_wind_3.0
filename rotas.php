@@ -5,7 +5,8 @@ use App\Controller\{
    LoginController,
    ProdutoController,
    CategoriaController,
-   MarcaController
+   MarcaController,
+   UsuarioController
 };
 
 
@@ -39,6 +40,40 @@ try {
       case '/enviar-nova-senha':
          LoginController::enviarNovaSenha();
          break;
+
+         // Rotas para trabalhar com o usuário
+
+      case '/usuario/meus-dados':
+         UsuarioController::meusDados();
+         break;
+
+      case '/usuario/salvar':
+         UsuarioController::salvar();
+         break;
+
+      case '/usuario/cadastrar':
+         UsuarioController::cadastrar();
+         break;
+
+
+
+      case '/usuario/ver':
+         // UsuarioController::ver();
+         break;
+
+      case '/usuario/excluir':
+         UsuarioController::excluir();
+         break;
+
+      case '/usuario/meus-dados':
+         UsuarioController::meusDados();
+         break;
+
+      case '/usuario/meus-dados/salvar':
+         UsuarioController::meusDadosSalvar();
+         break;
+
+
 
          //Rotas para trabalhar com produtos.
       case '/produto/listar':

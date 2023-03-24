@@ -20,6 +20,7 @@ Sistema específico para controle de inventário da empresa Restoque S.A.
 - `PHP 8`
 - `MySQL`
 - `Xampp`
+- `Composer`
 
 # Change Log
 
