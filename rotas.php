@@ -6,7 +6,8 @@ use App\Controller\{
    ProdutoController,
    CategoriaController,
    MarcaController,
-   UsuarioController
+   UsuarioController,
+   UsuarioGrupoController
 };
 
 
@@ -43,22 +44,20 @@ try {
 
          // Rotas para trabalhar com o usuário
 
-      case '/usuario/meus-dados':
-         UsuarioController::meusDados();
-         break;
-
-      case '/usuario/salvar':
-         UsuarioController::salvar();
+      case '/usuario':
+         UsuarioController::index();
          break;
 
       case '/usuario/cadastrar':
          UsuarioController::cadastrar();
          break;
 
-
+      case '/usuario/salvar':
+         UsuarioController::salvar();
+         break;
 
       case '/usuario/ver':
-         // UsuarioController::ver();
+         UsuarioController::ver();
          break;
 
       case '/usuario/excluir':
@@ -71,6 +70,28 @@ try {
 
       case '/usuario/meus-dados/salvar':
          UsuarioController::meusDadosSalvar();
+         break;
+
+         // Rotas para trabalhar com grupo de usuário
+
+      case '/usuario/grupo':
+         UsuarioGrupoController::index();
+         break;
+
+      case '/usuario/grupo/ver':
+         UsuarioGrupoController::ver();
+         break;
+
+      case '/usuario/grupo/cadastrar':
+         UsuarioGrupoController::cadastrar();
+         break;
+
+      case '/usuario/grupo/salvar':
+         UsuarioGrupoController::salvar();
+         break;
+
+      case '/usuario/grupo/excluir':
+         UsuarioGrupoController::excluir();
          break;
 
 

@@ -28,19 +28,19 @@
                     <legend class="form-label col-auto bg-light">Permissões do Grupo</legend>
 
                     <div class="form-row">
-                        <div class="form-group col-md-3">                            
+                        <div class="form-group col-md-3">
                             <input id="cadastrar" name="cadastrar" type="checkbox" <?= ($dados_grupo->cadastrar == 'S') ? 'checked' : '' ?> />
                             <label for="cadastrar">Cadastrar </label>
                         </div>
-                        <div class="form-group col-md-3">                            
+                        <div class="form-group col-md-3">
                             <input id="editar" name="editar" type="checkbox" <?= ($dados_grupo->editar == 'S') ? 'checked' : '' ?> />
                             <label for="editar">Editar </label>
                         </div>
-                        <div class="form-group col-md-3">                            
+                        <div class="form-group col-md-3">
                             <input id="listar" name="listar" type="checkbox" <?= ($dados_grupo->listar == 'S') ? 'checked' : '' ?> />
                             <label for="listar">Listar </label>
                         </div>
-                        <div class="form-group col-md-3">                            
+                        <div class="form-group col-md-3">
                             <input id="excluir" name="excluir" type="checkbox" <?= ($dados_grupo->excluir == 'S') ? 'checked' : '' ?> />
                             <label for="excluir">Excluir </label>
                         </div>
@@ -56,12 +56,13 @@
 
                 <?php if (isset($dados_grupo)) : ?>
                     <input name="id" type="hidden" value="<?= $dados_grupo->id ?>" />
-                    <a class="btn btn-danger" href="/usuario/grupo/excluir?id=<?= $dados_grupo->id ?>">
-                        EXCLUIR
+                    <a class="btn btn-outline-danger" href="/usuario/grupo/excluir?id=<?= $dados_grupo->id ?>">
+                        Excluir
                     </a>
                 <?php endif ?>
 
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-outline-success">Salvar</button>
+                <a href="/usuario" type="btn" class="btn btn-outline-primary">Voltar</a>
             </form>
         </main>
 

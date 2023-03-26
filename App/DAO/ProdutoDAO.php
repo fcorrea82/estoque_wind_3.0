@@ -46,12 +46,7 @@ class ProdutoDAO extends DAO
             ON produto.id_marca = marca.id");
         $stmt->execute();
 
-        $arr_produtos = array();
-
-        while ($c = $stmt->fetchObject())
-            $arr_produtos[] = $c;
-
-        return $arr_produtos;
+        return $stmt->fetchAll(\PDO::FETCH_CLASS);
     }
 
     /**

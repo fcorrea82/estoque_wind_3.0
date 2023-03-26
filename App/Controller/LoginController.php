@@ -56,10 +56,13 @@ class LoginController extends Controller
         $resultado = $login_dao->getUserByUserAndPass($usuario, $senha);
 
         if ($resultado !== false) {
-            $_SESSION["usuario_logado"] = array(
-                'id' => $resultado->id,
-                'nome' => $resultado->nome
-            );
+            $_SESSION["usuario_logado"] = (array) $resultado;
+
+            /* if(isset($_POST['remember']))
+                self::remember($usuario);  */
+
+            //var_dump($_SESSION["usuario_logado"]);
+
             header("Location: /");
         } else
             header("Location: /login?fail=true");
@@ -85,5 +88,15 @@ class LoginController extends Controller
     public static function updateNameOfCurrentUser($name)
     {
         $_SESSION['usuario_logado']['nome'] = $name;
+    }
+
+    public static function getNameOfCurrentUser()
+    {
+        return $_SESSION['usuario_logado']['nome'];
+    }
+
+    public static function getGrupOfCurrentUser()
+    {
+        return $_SESSION['usuario_logado']['grupo'];
     }
 }

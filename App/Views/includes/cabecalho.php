@@ -1,3 +1,11 @@
+<?php
+
+use App\Controller\LoginController;
+
+$usuario = LoginController::getNameOfCurrentUser();
+$grupo   = LoginController::getGrupOfCurrentUser();
+
+?>
 <header class="container mt-3">
     <div class="row mb-3">
 
@@ -9,44 +17,35 @@
         </div>
 
         <div class="col-sm">
-            <fieldset>
-                <legend>Dados do usuário</legend>
-                Bem-vindo
-                <strong>
-                    <a href="/usuario/meus-dados" class="btn">
-                        <?= App\Controller\LoginController::getNameOfUser(); ?>
-                    </a>
-                </strong>
 
-                <a class="btn btn-dark" href="/sair">Sair</a>
+            <div class="col-sm-5 text-right align-self-center">
+                <div class="btn-group" role="group" aria-label="Opções de Usuário">
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?= $usuario  ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <h6 class="dropdown-header"><?= $grupo ?></h6>
+                            <a class="dropdown-item" href="/usuario/meus-dados">Meus Dados</a>
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Grupos de Usuários</h6>
+                            <a class="dropdown-item" href="/usuario/grupo/cadastrar">Novo Grupo</a>
+                            <a class="dropdown-item" href="/usuario/grupo">Lista de Grupos</a>
+                            <div class="dropdown-divider"></div>
+                            <h6 class="dropdown-header">Usuários</h6>
+                            <a class="dropdown-item" href="/usuario/cadastrar">Novo Usuário</a>
+                            <a class="dropdown-item" href="/usuario">Lista de Usuários</a>
+                        </div>
+                    </div>
+                    <a class="btn btn-outline-dark" href="/sair">Sair</a>
+                </div>
+            </div>
 
-            </fieldset>
         </div>
 
 
 
-        <!--  <div class="col-sm-5 text-right align-self-center">
-            <div class="btn-group" role="group" aria-label="Opções de Usuário">
-                <div class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?= $usuario  ?>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <h6 class="dropdown-header"><?= $grupo ?></h6>
-                        <a class="dropdown-item" href="/usuario/meus-dados">Meus Dados</a>
-                        <div class="dropdown-divider"></div>
-                        <h6 class="dropdown-header">Grupos de Usuários</h6>
-                        <a class="dropdown-item" href="/usuario/grupo/cadastrar">Novo Grupo</a>
-                        <a class="dropdown-item" href="/usuario/grupo">Lista de Grupos</a>
-                        <div class="dropdown-divider"></div>
-                        <h6 class="dropdown-header">Usuários</h6>
-                        <a class="dropdown-item" href="/usuario/cadastrar">Novo Usuário</a>
-                        <a class="dropdown-item" href="/usuario">Lista de Usuários</a>
-                    </div>
-                </div>
-                <a class="btn btn-outline-dark" href="/sair">Sair</a>
-            </div>
-        </div> -->
+
 
 
 

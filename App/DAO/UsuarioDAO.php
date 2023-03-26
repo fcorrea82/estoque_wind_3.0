@@ -4,18 +4,22 @@ namespace App\DAO;
 
 class UsuarioDAO extends DAO
 {
-    /**
-     * Cria uma novo objeto para fazer o CRUD dos Usuário
-     */
+
     public function __construct()
     {
         parent::__construct();
     }
 
+    public function getById($id)
+    {
 
-    /**
-     * Retorna um usuário específico
-     */
+        $stmt = $this->conexao->prepare("SELECT * FROM usuario WHERE id = ?");
+        $stmt->bindValue(1, $id);
+        $stmt->execute();
+
+        return $stmt->fetchObject();
+    }
+
     public function getMyUserById($id)
     {
         $stmt = $this->conexao->prepare("SELECT id, nome, usuario, email FROM usuario WHERE id = ?");
@@ -28,7 +32,7 @@ class UsuarioDAO extends DAO
     public function getAllRows()
     {
         $sql = "SELECT u.id, u.nome, u.email, g.descricao AS grupo 
-                FROM usuarios u
+                FROM usuario u
                 JOIN grupos g ON (g.id = u.id_grupo)";
 
         $stmt = $this->conexao->prepare($sql);
@@ -59,12 +63,11 @@ class UsuarioDAO extends DAO
         $stmt->bindValue(2, $dados_usuario['email']);
         $stmt->bindValue(3, $dados_usuario['senha']);
         $stmt->bindValue(4, $dados_usuario['id']);
+        // $stmt->bindValue(5, $dados_usuario['id_grupo']);
         $stmt->execute();
     }
 
-    /**
-     * Remove um registro da tabela Categoria.
-     */
+
     public function delete($id)
     {
         $sql = "DELETE FROM usuario WHERE id = ? ";
@@ -73,9 +76,6 @@ class UsuarioDAO extends DAO
         $stmt->bindValue(1, $id);
         $stmt->execute();
     }
-
-
-
 
 
     public function checkUserByIdAndPassword($id, $senha)
