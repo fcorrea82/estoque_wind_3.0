@@ -2,8 +2,8 @@
 
 namespace App\DAO;
 
-abstract class DAO
-{
+abstract class DAO {
+
     protected $conexao;
 
     public function __construct()

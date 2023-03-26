@@ -2,97 +2,124 @@
 
 namespace App\DAO;
 
-/**
- * Classe que realiza busca de dados no banco para fornecer dados para o CRUD
- */
+use App\Model\ProdutoModel;
+use Exception;
+use PDOException;
 
 class ProdutoDAO extends DAO
 {
-
     /**
-     * Cria um novo objeto para fazer o CRUD de Produto
+     * Cria uma novo objeto para fazer o CRUD de Categorias
      */
-
     public function __construct()
     {
         parent::__construct();
     }
+
 
     /**
      * Retorna um registro específico da tabela Categoria
      */
     public function getById($id)
     {
+        try 
+        {
+            $stmt = $this->conexao->prepare("SELECT * FROM produto WHERE id = ?");
+            $stmt->bindValue(1, $id);
+            $stmt->execute();
 
-        $stmt = $this->conexao->prepare("SELECT * FROM produto WHERE id = ?");
-        $stmt->bindValue(1, $id);
-        $stmt->execute();
+            return $stmt->fetchObject('App\Model\ProdutoModel');
 
-        return $stmt->fetchObject();
+        } catch (PDOException $e) {
+            
+            throw new Exception("Erro ao obter o produto no banco de dados.");
+        }
     }
 
-    /**
-     * Retorna todos os registros da tabela categoria
-     */
 
+    /**
+     * Retorna todos os registros da tabela Categoria.
+     */
     public function getAllRows()
     {
 
-        $stmt = $this->conexao->prepare("SELECT produto.id, produto.descricao, produto.preco, categoria.descricao as categoria, marca.descricao as marca
-            FROM produto
-            INNER JOIN categoria
-            ON produto.id_categoria = categoria.id
-            INNER JOIN marca
-            ON produto.id_marca = marca.id");
+        $stmt = $this->conexao->prepare("SELECT * FROM produto where id > 10 ");
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS);
     }
 
+
+
     /**
-     * Método que insere na tabela categoria
+     * Método que insere uma categoria na tabela Categoria.
      */
-
-    public function insert($dados_produto)
+    public function insert(ProdutoModel $model): bool
     {
+        try {
 
-        $sql = "INSERT INTO produto (id_marca, id_categoria, descricao, preco) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO produto
+                            (id_marca, id_categoria, descricao, preco) 
+                            VALUES 
+                            (?, ?, ?, ?)";
 
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $dados_produto['id_marca']);
-        $stmt->bindValue(2, $dados_produto['id_categoria']);
-        $stmt->bindValue(3, $dados_produto['descricao']);
-        $stmt->bindValue(4, $dados_produto['preco']);
-        $stmt->execute();
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(1, $model->id_marca);
+            $stmt->bindValue(2, $model->id_categoria);
+            $stmt->bindValue(3, $model->descricao);
+            $stmt->bindValue(4, $model->preco);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+
+            throw new Exception("Erro ao cadastrar novo produto.");
+        }
     }
 
+
     /**
-     * Atualiza uma registro na tabela Categoraia
+     * Atualiza um registro na tabela Categoria.
      */
-    public function update($dados_produto)
+    public function update(ProdutoModel $model): bool
     {
+        try {
+            $sql = "UPDATE produto 
+            SET id_marca = ?, id_categoria = ?, descricao = ?, preco = ?
+            WHERE id = ? ";
 
-        $sql = "UPDATE produto SET id_marca =?, id_categoria =?, descricao =?, preco =? WHERE id = ?";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(1, $model->id_marca);
+            $stmt->bindValue(2, $model->id_categoria);
+            $stmt->bindValue(3, $model->descricao);
+            $stmt->bindValue(4, $model->preco);
+            $stmt->bindValue(5, $model->id);
 
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $dados_produto['id_marca']);
-        $stmt->bindValue(2, $dados_produto['id_categoria']);
-        $stmt->bindValue(3, $dados_produto['descricao']);
-        $stmt->bindValue(4, $dados_produto['preco']);
-        $stmt->bindValue(5, $dados_produto['id']);
-        $stmt->execute();
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+
+            throw new Exception("Erro ao Inserir o Produto.");
+        }
     }
 
+
     /**
-     * Remove um registro da tabela Categoria
+     * Remove um registro da tabela Categoria.
      */
-    public function delete($id)
+    public function delete($id): bool
     {
+        try
+        {
+            $sql = "DELETE FROM produtos     WHERE id = ? ";
 
-        $sql = "DELETE FROM produto WHERE id = ?";
+            $stmt = $this->conexao->prepare($sql);
+            $stmt->bindValue(1, $id);
 
-        $stmt = $this->conexao->prepare($sql);
-        $stmt->bindValue(1, $id);
-        $stmt->execute();
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+
+            return false;
+        }        
     }
 }

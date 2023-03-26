@@ -17,7 +17,7 @@
                 Cadastro de Usuário
             </h4>
 
-            <?php if (isset($_GET['duplicate_email']) || isset($validations['duplicate_email'])) : ?>
+            <?php if (isset($_GET['duplicate_email']) || isset($validations['duplicate_email']))  : ?>
                 <div class="alert alert-danger" role="alert">
                     O <strong>e-mail</strong> informado já está sendo usado para outro usuário.
                 </div>
@@ -51,39 +51,41 @@
                         <label for="id_grupo">Grupo: </label>
 
                         <select id="id_grupo" name="id_grupo" class="form-control" required>
-                            <option>Selecione o Grupo</option>
+                                <option>Selecione o Grupo</option>
 
-                            <?php
+                                <?php 
+                                
+                                    foreach($lista_grupos as $g):
 
-                            foreach ($lista_grupos as $g) :
+                                        $selecinado = "";
 
-                                $selecinado = "";
+                                        if(isset($dados_usuario->id_grupo))
+                                            $selecinado = ($g->id == $dados_usuario->id_grupo) ? "selected" : "";
+                                ?>
 
-                                if (isset($dados_usuario->id_grupo))
-                                    $selecinado = ($g->id == $dados_usuario->id_grupo) ? "selected" : "";
-                            ?>
-
-                                <option value="<?= $g->id ?>" <?= $selecinado ?>>
-                                    <?= $g->descricao  ?>
+                                <option value="<?= $g->id ?>" <?= $selecinado ?> >
+                                    <?= $g->descricao  ?> 
                                 </option>
 
-                            <?php endforeach ?>
+                                <?php endforeach ?>
 
-                        </select>
-
+                            </select>
+                        
                     </div>
                 </div>
 
 
+
+
+
                 <?php if (isset($dados_usuario)) : ?>
                     <input name="id" type="hidden" value="<?= $dados_usuario->id ?>" />
-                    <a class="btn btn-outline-danger" href="/usuario/excluir?id=<?= $dados_usuario->id ?>">
-                        Excluir
+                    <a class="btn btn-danger" href="/usuario/excluir?id=<?= $dados_usuario->id ?>">
+                        EXCLUIR
                     </a>
                 <?php endif ?>
 
-                <button type="submit" class="btn btn-outline-success">Salvar</button>
-                <a href="/usuario" type="btn" class="btn btn-outline-primary">Voltar</a>
+                <button type="submit" class="btn btn-success">Salvar</button>
             </form>
         </main>
 

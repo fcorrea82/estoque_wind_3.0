@@ -1,24 +1,19 @@
 <html>
-	<head>
-		<title>Sistema de Estoque 3.0</title>
-		<?php include 'includes/css_config.php' ?>
-		
-	</head>		
-	<body>
-		<?php include 'includes/cabecalho.php' ?>
+    <head>
+        <title>Sistema</title>
+        
+        <?php include PATH_VIEW . 'includes/css_config.php' ?>
 
-		<main>
-            Tela inicial
-		</main>
+    </head>
+    <body>
+        <?php include 'includes/cabecalho.php' ?>
 
- 
-		<?php include 'includes/rodape.php' ?>	
-		<?php include 'includes/js_config.php' ?>	
-	</body>	
+        <main class="container">
+            <h2>Dashboard</h2>
+        </main>
+
+        <?php include 'includes/rodape.php' ?>
+
+        <?php include PATH_VIEW . 'includes/js_config.php' ?>
+    </body>
 </html>
-
-
-
-
-
-

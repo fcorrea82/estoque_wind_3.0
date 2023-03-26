@@ -6,39 +6,40 @@
     </head>
     <body>
         <div id="global">
-         
-        <?php include PATH_VIEW . 'includes/cabecalho.php' ?>
+            
+            <?php include PATH_VIEW . 'includes/cabecalho.php' ?>
 
-               <main class="container mt-4">
+            <main class="container mt-3">
 
-               <h4>Cadastro de Categorias </h4>
+                <h4>
+                   Cadastro de Categoria
+                </h4>
 
                 <form method="post" action="/categoria/salvar">
 
-                <div class="form-group">
-                   <label>Descricao (Nome) da categoria:
-                        <input name="descricao" class="form-control" value="<?= isset($dados_categoria) ? $dados_categoria->descricao : "" ?>" type="text" />
-                   </label>
-                </div>
+                    <div class="form-group">                    
+                        <label>Descrição (Nome) da categoria:
+                            <input name="descricao" class="form-control" value="<?= isset($dados_categoria) ? $dados_categoria->descricao : "" ?>" type="text" />
+                        </label>
+                    </div>
 
                     <?php if(isset($dados_categoria)): ?>
                         <input name="id" type="hidden" value="<?= $dados_categoria->id ?>" />
-                    
 
-                    <a href="/categoria/excluir?excluir=true&id=<?= $dados_categoria->id ?>" class="btn btn-outline-danger">
-                        Excluir
-                    </a>
-                    <?php endif; ?>
-                  
-                    <button type="submit" class="btn btn-outline-success">Salvar</button>
-                    <a href="/categoria/listar" type="btn" class="btn btn-outline-primary">Voltar</a>
+                        <a class="btn btn-danger" href="/categoria/excluir?id=<?= $dados_categoria->id ?>">
+                            EXCLUIR
+                        </a>
+
+                    <?php endif ?>
+
+                    <button type="submit" class="btn btn-success">Salvar</button>
                 </form>
             </main>
 
-        
+             <?php include PATH_VIEW . 'includes/rodape.php' ?>
+
+             <?php include PATH_VIEW . 'includes/js_config.php' ?>
              
         </div>
-        <?php include PATH_VIEW . 'includes/rodape.php' ?>
-        <?php include PATH_VIEW . 'includes/js_config.php' ?>
     </body>
 </html>

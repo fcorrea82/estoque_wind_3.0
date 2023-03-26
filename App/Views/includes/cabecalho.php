@@ -6,106 +6,87 @@ $usuario = LoginController::getNameOfCurrentUser();
 $grupo   = LoginController::getGrupOfCurrentUser();
 
 ?>
+
 <header class="container mt-3">
     <div class="row mb-3">
-
-        <div class="col-md-9">
-            <h3>
+        <div class="col-md-7">
+            <h1>
                 SIR 3.0 -
                 <small>Sistema de Inventário Restoque</small>
-            </h3>
+            </h1>
         </div>
-
-        <div class="col-sm">
-
-            <div class="col-sm-5 text-right align-self-center">
-                <div class="btn-group" role="group" aria-label="Opções de Usuário">
-                    <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?= $usuario  ?>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <h6 class="dropdown-header"><?= $grupo ?></h6>
-                            <a class="dropdown-item" href="/usuario/meus-dados">Meus Dados</a>
-                            <div class="dropdown-divider"></div>
-                            <h6 class="dropdown-header">Grupos de Usuários</h6>
-                            <a class="dropdown-item" href="/usuario/grupo/cadastrar">Novo Grupo</a>
-                            <a class="dropdown-item" href="/usuario/grupo">Lista de Grupos</a>
-                            <div class="dropdown-divider"></div>
-                            <h6 class="dropdown-header">Usuários</h6>
-                            <a class="dropdown-item" href="/usuario/cadastrar">Novo Usuário</a>
-                            <a class="dropdown-item" href="/usuario">Lista de Usuários</a>
-                        </div>
+        <div class="col-sm-5 text-right align-self-center">
+            <div class="btn-group" role="group" aria-label="Opções de Usuário">
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?= $usuario  ?>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <h6 class="dropdown-header"><?= $grupo ?></h6>
+                        <a class="dropdown-item" href="/usuario/meus-dados">Meus Dados</a>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header">Grupos de Usuários</h6>
+                        <a class="dropdown-item" href="/usuario/grupo/cadastrar">Novo Grupo</a>
+                        <a class="dropdown-item" href="/usuario/grupo">Lista de Grupos</a>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header">Usuários</h6>
+                        <a class="dropdown-item" href="/usuario/cadastrar">Novo Usuário</a>
+                        <a class="dropdown-item" href="/usuario">Lista de Usuários</a>
                     </div>
-                    <a class="btn btn-outline-dark" href="/sair">Sair</a>
                 </div>
+                <a class="btn btn-outline-dark" href="/sair">Sair</a>
             </div>
-
         </div>
-
-
-
-
-
-
-
     </div>
 
-    <!--<nav class="navbar navbar-expand-lg bg-light">
-   
-   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <!--  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item"> 
-                <a class="nav-link" href="/"> Tela Inicial </a> 
-            </li>
-       
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Categoria
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/categoria/cadastrar">Cadastrar Categoria</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/categoria/listar">Listar Categoria</a></li>
-                    
-                    
-                </ul>
-            </li>
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/"> Tela Inicial </a>
+                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Marca
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Cadastrar Marca</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Listar Marca</a></li>
-                    
-                   
-                </ul>
-            </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categoria
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/categoria/cadastrar">Cadastrar Categoria</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/categoria">Listar Categorias</a>
+                    </div>
+                </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Produto
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/produto/cadastrar">Cadastrar Produto</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/produto/listar">Listar Produto</a></li>
-                    
-                    
-                </ul>
-            </li>
-        </ul>
-    </div>
-</nav> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Marca
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/marca/cadastrar">Cadastrar Marca</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/marca">Lista de Marcas</a>
+                    </div>
+                </li>
 
-    <!-- menu novo -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Produto
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/produto/cadastrar">Cadastrar Produto</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/produto">Lista de Produtos</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </nav> -->
 
     <div class="container py-3" id="container">
 
@@ -114,8 +95,8 @@ $grupo   = LoginController::getGrupOfCurrentUser();
             <!--<a class="navbar-brand">Navbar</a> -->
 
             <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="navbar-toggler-icon"></span>
-            </button> -->
+        <span class="navbar-toggler-icon"></span>
+    </button> -->
 
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
@@ -480,10 +461,10 @@ $grupo   = LoginController::getGrupOfCurrentUser();
                                 </div>
                             </div>
                             <!--
-                            <button class="dropdown-item" type="button">Something else here</button>
-                            <div class="dropdown-divider"></div>
-                            <button class="dropdown-item" type="button">Separated link</button>
-                            -->
+                    <button class="dropdown-item" type="button">Something else here</button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item" type="button">Separated link</button>
+                    -->
                         </div>
                     </li>
 
@@ -561,15 +542,7 @@ $grupo   = LoginController::getGrupOfCurrentUser();
 
             </div>
 
-
-
-        </nav>
-
-
-    </div>
-
-    <a class="js-scroll-top scroll-top btn btn-primary btn-sm hidden" href="#container" hidden>
-    </a>
-
+            <a class="js-scroll-top scroll-top btn btn-primary btn-sm hidden" href="#container" hidden>
+            </a>
 
 </header>

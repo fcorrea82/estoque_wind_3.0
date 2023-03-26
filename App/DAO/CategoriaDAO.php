@@ -2,86 +2,80 @@
 
 namespace App\DAO;
 
-/**
- * Classe que realiza busca de dados no banco para fornecer dados para o CRUD
- */
-
-class CategoriaDAO extends DAO
-{
+class CategoriaDAO extends DAO {
 
     /**
-     * Cria um novo objeto para fazer o CRUD de Categoria
+     * Cria uma novo objeto para fazer o CRUD de Categorias
      */
-
     public function __construct()
     {
         parent::__construct();
     }
 
+
     /**
      * Retorna um registro específico da tabela Categoria
      */
-    public function getById($id)
-    {
+    public function getById($id) {
 
         $stmt = $this->conexao->prepare("SELECT * FROM categoria WHERE id = ?");
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
-        return $stmt->fetchObject();
+        return $stmt->fetchObject();            
     }
 
+
     /**
-     * Retorna todos os registros da tabela categoria
+     * Retorna todos os registros da tabela Categoria.
      */
-
-    public function getAllRows()
-    {
-
+    public function getAllRows() {
+        
         $stmt = $this->conexao->prepare("SELECT * FROM categoria");
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_CLASS);
     }
 
-    /**
-     * Método que insere na tabela categoria
-     */
 
-    public function insert($dados_categoria)
-    {
+
+    /**
+     * Método que insere uma categoria na tabela Categoria.
+     */
+    public function insert($dados_categoria) {
 
         $sql = "INSERT INTO categoria (descricao) VALUES (?)";
-
+        
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $dados_categoria['descricao']);
         $stmt->execute();
     }
 
+
     /**
-     * Atualiza uma registro na tabela Categoraia
+     * Atualiza um registro na tabela Categoria.
      */
-    public function update($dados_categoria)
-    {
+    public function update($dados_categoria) {
 
-        $sql = "UPDATE categoria SET descricao =? WHERE id = ?";
-
+        $sql = "UPDATE categoria SET descricao = ? WHERE id = ? ";
+        
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $dados_categoria['descricao']);
         $stmt->bindValue(2, $dados_categoria['id']);
         $stmt->execute();
     }
 
+
     /**
-     * Remove um registro da tabela Categoria
+     * Remove um registro da tabela Categoria.
      */
-    public function delete($id)
-    {
+    public function delete($id) {
 
-        $sql = "DELETE FROM categoria WHERE id = ?";
-
+        $sql = "DELETE FROM categoria WHERE id = ? ";
+        
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
     }
 }
+
