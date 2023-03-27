@@ -4,23 +4,23 @@
 
 # Introdução
 
-Sistema específico para controle de inventário da empresa Restoque S.A.
+Sistema específico para controle de inventário da empresa Restoque S.A com modelo MVC
 
 # Instruções
 
 - Instalar o Xampp com Apache + PHP + MySQL
 - Realizar a importação do banco de dados dentro do PHPMyAdmin
 
-# Funcionalidades do projeto
+# Documentação do Projeto
 
-- `Funcionalidade 1`: projeto com padrão MVC
+- Em breve.  
 
 # Técnicas e tecnologias utilizadas
 
 - `PHP 8`
 - `MySQL`
 - `Xampp`
-- `Composer`
+
 
 # Change Log
 
