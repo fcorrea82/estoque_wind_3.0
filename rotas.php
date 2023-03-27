@@ -163,7 +163,74 @@ try {
             MarcaController::excluir();
             break;
 
+            //Rotas para trabalhar com Armazenamento
+            //HD
+            
+             case '/hd/listar':
+            //HDController::listarhds();
+            break;
 
+        case '/hd/cadastrar':
+            //HDController::cadastrar();
+            break;
+
+        case '/hd/salvar':
+           // HDController::salvar();
+            break;
+
+        case '/hd/ver':
+           // HDController::ver();
+            break;
+
+        case '/hd/excluir':
+          //  HDController::excluir();
+            break;
+            
+         //Pen drive
+          
+                 case '/pendrive/listar':
+            //PendriveController::listarpendrive();
+            break;
+
+        case '/pendrive/cadastrar':
+            //PendriveController::cadastrar();
+            break;
+
+        case '/pendrive/salvar':
+           // PendriveController::salvar();
+            break;
+
+        case '/pendrive/ver':
+           // PendriveController::ver();
+            break;
+
+        case '/pendrive/excluir':
+          //  PendriveController::excluir();
+            break;
+            
+            
+         //Rotas para trabalhar com Automação Comercial
+            
+            //Pin Pad
+               case '/pinpad/listar':
+            //PinpdadController::listarpendrive();
+            break;
+
+        case '/pinpad/cadastrar':
+            //PinpadController::cadastrar();
+            break;
+
+        case '/pinpad/salvar':
+           // PinpadController::salvar();
+            break;
+
+        case '/pinpad/ver':
+           // PinpadController::ver();
+            break;
+
+        case '/pinpad/excluir':
+          //  PinpadController::excluir();
+            break;
 
 
 
@@ -173,5 +240,5 @@ try {
             break;
     }
 } catch (Exception $e) {
-    echo "Deu ruim " . $e->getMessage();
+    echo "Rota não encontrada " . $e->getMessage();
 }
