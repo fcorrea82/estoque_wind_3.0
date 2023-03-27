@@ -1,16 +1,19 @@
 <html>
-    <head>
-        <title>Sistema</title>
-        <?php include PATH_VIEW . 'includes/css_config.php' ?>
-    </head>
-    <body>
-        
-        <?php include PATH_VIEW . 'includes/cabecalho.php' ?>
 
-        <main class="container mt-3">
+<head>
+    <title>Sistema</title>
+    <?php include PATH_VIEW . 'includes/css_config.php' ?>
+</head>
 
-            <?php if(isset($_GET['excluido'])): ?>
-            <p>Grupo foi excluido!<p>
+<body>
+
+    <?php include PATH_VIEW . 'includes/cabecalho.php' ?>
+
+    <main class="container mt-3">
+
+        <?php if (isset($_GET['excluido'])) : ?>
+            <p>Grupo foi excluido!
+            <p>
             <?php endif ?>
 
             <h4>
@@ -23,26 +26,29 @@
                         <th scope="col">Ações</th>
                         <th scope="col">Id</th>
                         <th scope="col-lg-9">Descrição:</th>
+                        <th scope="col">Cadastrar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($lista_grupos as $g): ?>
-                    <tr>
-                        <th scope="row"> 
-                            <a href="/usuario/grupo/ver?id=<?= $g->id ?>">
-                                Abrir
-                            </a> 
-                        </th>
-                        <td> <?= $g->id ?> </td>
-                        <td> <?= $g->descricao  ?> </td>
-                    </tr>
+                    <?php foreach ($lista_grupos as $g) : ?>
+                        <tr>
+                            <th scope="row">
+                                <a href="/usuario/grupo/ver?id=<?= $g->id ?>">
+                                    Abrir
+                                </a>
+                            </th>
+                            <td> <?= $g->id ?> </td>
+                            <td> <?= $g->descricao  ?> </td>
+                            <td> <?= $g->cadastrar  ?> </td>
+                        </tr>
                     <?php endforeach ?>
                 </tbody>
             </table>
-        </main>
+    </main>
 
-        <?php include PATH_VIEW . 'includes/rodape.php' ?>
-        <?php include PATH_VIEW . 'includes/js_config.php' ?>
+    <?php include PATH_VIEW . 'includes/rodape.php' ?>
+    <?php include PATH_VIEW . 'includes/js_config.php' ?>
 
-    </body>
+</body>
+
 </html>

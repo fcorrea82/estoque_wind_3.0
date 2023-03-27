@@ -2,7 +2,8 @@
 
 namespace App\DAO;
 
-class UsuarioGrupoDAO extends DAO {
+class UsuarioGrupoDAO extends DAO
+{
 
     /**
      * Cria uma novo objeto para fazer o CRUD de Grupos de Usuário.
@@ -16,21 +17,23 @@ class UsuarioGrupoDAO extends DAO {
     /**
      * Retorna um registro específico da tabela Grupo de Usuário
      */
-    public function getById($id) {
+    public function getById($id)
+    {
 
         $stmt = $this->conexao->prepare("SELECT * FROM grupos WHERE id = ?");
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
-        return $stmt->fetchObject();            
+        return $stmt->fetchObject();
     }
 
 
     /**
      * Retorna todos os registros da tabela 
      */
-    public function getAllRows() {
-        
+    public function getAllRows()
+    {
+
         $stmt = $this->conexao->prepare("SELECT * FROM grupos");
         $stmt->execute();
 
@@ -40,12 +43,13 @@ class UsuarioGrupoDAO extends DAO {
 
 
     /**
-     * Método que insere uma categoria na tabela Categoria.
+     * Método que insere um grupo na tabela de grupos.
      */
-    public function insert($dados) {
+    public function insert($dados)
+    {
 
         $sql = "INSERT INTO grupos (descricao, cadastrar, editar, listar, excluir) VALUES (?, ?, ?, ?, ?)";
-        
+
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $dados['descricao']);
         $stmt->bindValue(2, $dados['cadastrar']);
@@ -59,12 +63,13 @@ class UsuarioGrupoDAO extends DAO {
     /**
      * Atualiza um registro na tabela Categoria.
      */
-    public function update($dados) {
+    public function update($dados)
+    {
 
         $sql = "UPDATE grupos 
                 SET descricao = ?, cadastrar = ?, editar = ?, listar = ?, excluir = ? 
                 WHERE id = ? ";
-        
+
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $dados['descricao']);
         $stmt->bindValue(2, $dados['cadastrar']);
@@ -79,13 +84,13 @@ class UsuarioGrupoDAO extends DAO {
     /**
      * Remove um registro da tabela Categoria.
      */
-    public function delete($id) {
+    public function delete($id)
+    {
 
         $sql = "DELETE FROM grupos WHERE id = ? ";
-        
+
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
     }
 }
-

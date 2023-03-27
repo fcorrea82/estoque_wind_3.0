@@ -57,7 +57,7 @@
                     <select id="id_categoria" name="id_categoria" class="form-control">
                         <option value="">Selecione a categoria</option>
 
-                        <?php foreach($model->lista_categorias as $categoria):                       
+                        <?php foreach ($model->lista_categorias as $categoria) :
 
                             $selecinado = ($categoria->id == $model->id_categoria) ? "selected" : "";
                         ?>
@@ -76,7 +76,7 @@
                     <select id="id_marca" name="id_marca" class="form-control">
                         <option value="">Selecione a marca</option>
 
-                        <?php foreach($model->lista_marcas as $marca):
+                        <?php foreach ($model->lista_marcas as $marca) :
 
                             $selecinado = ($marca->id == $model->id_marca) ? "selected" : "";
 
@@ -93,13 +93,14 @@
             <?php if ($model->id !== null) : ?>
                 <input name="id" type="hidden" value="<?= $model->id ?>" />
 
-                <a class="btn btn-danger" href="/produto/excluir?id=<?= $model->id ?>">
-                    EXCLUIR
+                <a class="btn btn-outline-danger" href="/produto/excluir?id=<?= $model->id ?>">
+                    Excluir
                 </a>
 
             <?php endif ?>
 
-            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="submit" class="btn btn-outline-success">Salvar</button>
+            <a href="/produto/listar" type="btn" class="btn btn-outline-primary">Voltar</a>
 
         </form>
     </main>

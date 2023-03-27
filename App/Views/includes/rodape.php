@@ -1,12 +1,11 @@
-
 <footer class="container mt-5">
 
     <div class="text-center">
         <p>
-            SISGEN - Sistema de Gestão - Todos os direitos reservados.
+            Sistema de Inventário Restoque 3.0 - Todos os direitos reservados.
         </p>
         <p>
-            Programação Web com @prof.tiagotas
+            Programação Web com @Flavio Correa
         </p>
     </div>
 

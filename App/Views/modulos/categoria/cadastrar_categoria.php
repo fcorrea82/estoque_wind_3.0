@@ -1,45 +1,49 @@
 <html lang="pt-br">
-    <head>
-        <meta charset="utf-8" />
-        <title>CADASTRAR CATEGORIA</title>        
-        <?php include PATH_VIEW . 'includes/css_config.php' ?>
-    </head>
-    <body>
-        <div id="global">
-            
-            <?php include PATH_VIEW . 'includes/cabecalho.php' ?>
 
-            <main class="container mt-3">
+<head>
+    <meta charset="utf-8" />
+    <title>CADASTRAR CATEGORIA</title>
+    <?php include PATH_VIEW . 'includes/css_config.php' ?>
+</head>
 
-                <h4>
-                   Cadastro de Categoria
-                </h4>
+<body>
+    <div id="global">
 
-                <form method="post" action="/categoria/salvar">
+        <?php include PATH_VIEW . 'includes/cabecalho.php' ?>
 
-                    <div class="form-group">                    
-                        <label>Descrição (Nome) da categoria:
-                            <input name="descricao" class="form-control" value="<?= isset($dados_categoria) ? $dados_categoria->descricao : "" ?>" type="text" />
-                        </label>
-                    </div>
+        <main class="container mt-3">
 
-                    <?php if(isset($dados_categoria)): ?>
-                        <input name="id" type="hidden" value="<?= $dados_categoria->id ?>" />
+            <h4>
+                Cadastro de Categoria
+            </h4>
 
-                        <a class="btn btn-danger" href="/categoria/excluir?id=<?= $dados_categoria->id ?>">
-                            EXCLUIR
-                        </a>
+            <form method="post" action="/categoria/salvar">
 
-                    <?php endif ?>
+                <div class="form-group">
+                    <label>Descrição (Nome) da categoria:
+                        <input name="descricao" class="form-control" value="<?= isset($dados_categoria) ? $dados_categoria->descricao : "" ?>" type="text" />
+                    </label>
+                </div>
 
-                    <button type="submit" class="btn btn-success">Salvar</button>
-                </form>
-            </main>
+                <?php if (isset($dados_categoria)) : ?>
+                    <input name="id" type="hidden" value="<?= $dados_categoria->id ?>" />
 
-             <?php include PATH_VIEW . 'includes/rodape.php' ?>
+                    <a class="btn btn-outline-danger" href="/categoria/excluir?id=<?= $dados_categoria->id ?>">
+                        Excluir
+                    </a>
 
-             <?php include PATH_VIEW . 'includes/js_config.php' ?>
-             
-        </div>
-    </body>
+                <?php endif ?>
+
+                <button type="submit" class="btn btn-outline-success">Salvar</button>
+                <a href="/categoria/listar" type="btn" class="btn btn-outline-primary">Voltar</a>
+            </form>
+        </main>
+
+        <?php include PATH_VIEW . 'includes/rodape.php' ?>
+
+        <?php include PATH_VIEW . 'includes/js_config.php' ?>
+
+    </div>
+</body>
+
 </html>
