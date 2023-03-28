@@ -16,41 +16,49 @@
             <p>
             <?php endif ?>
 
-            <h4>
-                Lista de Usuários
-                <a href="/usuario/cadastrar" type="btn" class="btn btn-outline-primary">Cadastrar</a>
-            </h4>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h4 class="m-0">Lista de Usuários</h4>
+                        <div>
+                            <a href="/usuario/cadastrar" type="btn" class="btn btn-outline-primary">Cadastrar</a>
+                        </div>
+                    </div>
+                </div>
 
-            <table class="table table-hover mt-3">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Ações</th>
-                        <th scope="col">Id</th>
-                        <th scope="col-lg-6">Nome:</th>
-                        <th scope="col-lg-6">Usuario:</th>
-                        <th scope="col">Grupo:</th>
-                        <th scope="col">Email:</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($lista_usuarios as $u) : ?>
+                <table class="table table-hover mt-3">
+                    <thead class="thead-dark">
                         <tr>
-                            <th scope="row">
-                                <a href="/usuario/ver?id=<?= $u->id ?>">
-                                    Abrir
-                                </a>
-                            </th>
-                            <td> <?= $u->id ?> </td>
-                            <td> <?= $u->nome  ?> </td>
-                            <td> <?= $u->usuario  ?> </td>
-                            <td> <?= $u->grupo  ?> </td>
-                            <td> <?= $u->email  ?> </td>
+                            <th scope="col">Ações</th>
+                            <th scope="col">Id</th>
+                            <th scope="col-lg-6">Nome:</th>
+                            <th scope="col-lg-6">Usuario:</th>
+                            <th scope="col">Grupo:</th>
+                            <th scope="col">Email:</th>
 
                         </tr>
-                    <?php endforeach ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($lista_usuarios as $u) : ?>
+                            <tr>
+                                <th scope="row">
+                                    <a href="/usuario/ver?id=<?= $u->id ?>">
+                                        Abrir
+                                    </a>
+                                </th>
+                                <td> <?= $u->id ?> </td>
+                                <td> <?= $u->nome  ?> </td>
+                                <td> <?= $u->usuario  ?> </td>
+                                <td> <?= $u->grupo  ?> </td>
+                                <td> <?= $u->email  ?> </td>
+
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                </table>
+
+            </div>
     </main>
 
     <?php include PATH_VIEW . 'includes/rodape.php' ?>
