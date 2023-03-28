@@ -1,4 +1,4 @@
-# Sistema de Inventário Restoque 3.0 [![license](https://img.shields.io/badge/license-Apache%202.4-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) [![PHP](https://img.shields.io/badge/license-PHP%208.0-blue.svg)](#)
+# Sistema de Inventário Restoque 3.0 [![license](https://img.shields.io/badge/license-Apache%202.4.54-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) [![PHP](https://img.shields.io/badge/license-PHP%208.1.12-blue.svg)](#) [![MariaDB 10.4.27](https://img.shields.io/badge/license-PHP%208.1.12-blue.svg)](#)
 
 ![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
 
