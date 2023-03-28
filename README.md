@@ -13,14 +13,15 @@ Sistema específico para controle de inventário da empresa Restoque S.A com mod
 
 # Documentação do Projeto
 
-- Em breve.  
+- Em breve.
 
 # Técnicas e tecnologias utilizadas
 
-- `PHP 8`
-- `MySQL`
-- `Xampp`
-
+- `PHP 8.1.12`
+- `MySQL MariaDB 10.4.27`
+- `Apache 2.4.54 x64 OpenSSL 1.1.1`
+- `phpMyAdmin 5.2.0`
+- `XAMPP Control Panel 3.2.4`
 
 # Change Log
 
