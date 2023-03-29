@@ -33,7 +33,7 @@
                             <th scope="col">Ações</th>
                             <th scope="col">Id</th>
                             <th scope="col-lg-6">Nome:</th>
-
+                            <th scope="col-lg-6">Usuario:</th>
                             <th scope="col">Grupo:</th>
                             <th scope="col">Email:</th>
 
@@ -49,7 +49,7 @@
                                 </th>
                                 <td> <?= $u->id ?> </td>
                                 <td> <?= $u->nome  ?> </td>
-
+                                <td> <?= $u->usuario  ?> </td>
                                 <td> <?= $u->grupo  ?> </td>
                                 <td> <?= $u->email  ?> </td>
 
