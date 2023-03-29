@@ -7,5 +7,5 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.js" defer></script>
 <script src="https://unpkg.com/@highlightjs/cdn-assets@10.5.0/highlight.js" defer></script>
-<script src="/App/dist/js/bootstrap-submenu.js" defer></script>
-<script src="/App/assets/js/docs.js" defer></script>
+<script src="../App/Views/includes/dist/js/bootstrap-submenu.js" defer></script>
+<script src="../App/Views/includes/assets/js/docs.js" defer></script>

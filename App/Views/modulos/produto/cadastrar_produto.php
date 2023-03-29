@@ -1,110 +1,103 @@
 <html>
 
 <head>
-    <title>Cadastro de Produtos</title>
 
+    <title>Cadastro de Produtos</title>
     <?php include PATH_VIEW . 'includes/css_config.php' ?>
 
 </head>
 
 <body>
+
     <?php include PATH_VIEW . 'includes/cabecalho.php' ?>
 
-    <main class="container mt-3">
-
-        <h4>
-            Cadastro de Produto
-        </h4>
-
-        <?php if ($model->hasValidationErrors()) : ?>
-
-            <div class="alert alert-danger" role="alert">
-
-                <?php foreach ($model->getValidationErrors() as $error) :
-
-                    echo $error . "<br />";
-
-                endforeach; ?>
-            </div>
-        <?php endif; ?>
-
-
-
-
+    <main class="container mt-4">
+        <h4>Cadastro de Produtos </h4>
         <form method="post" action="/produto/salvar">
 
             <div class="form-group">
-                <label for="descricao">Descrição (Nome) do produto:</label>
-                <input class="form-control" id="descricao" name="descricao" type="text" value="<?= $model->descricao ?>" />
+                <label for="descricao"> Descrição (Nome) do produto: </label>
+                <input name="descricao" id="descricao" class="form-control" type="text" value="<?= isset($dados_produto) ? $dados_produto->descricao : "" ?>" />
+
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="preco">Preço:</label>
-                    <input class="form-control" id="preco" name="preco" type="number" value="<?= $model->preco ?>" />
+                    <label for="preco"> Preço:</label>
+                    <input id="preco" name="preco" class="form-control" type="number" value="<?= isset($dados_produto) ? $dados_produto->preco : "" ?>" />
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label for="foto">Foto:</label>
-                    <input class="form-control-file" id="foto" name="foto" type="file" />
+                    <label for="foto"> Foto:</label>
+                    <input id="foto" name="foto" class="form-control-file" type="file" />
                 </div>
             </div>
 
-
             <div class="form-row">
+
                 <div class="form-group col-md-6">
-                    <label for="id_categoria">Categoria:</label>
+                    <label for="id_categoria">Categoria: </label>
                     <select id="id_categoria" name="id_categoria" class="form-control">
-                        <option value="">Selecione a categoria</option>
+                        <option>Selecione a categoria</option>
 
-                        <?php foreach ($model->lista_categorias as $categoria) :
+                        <?php
 
-                            $selecinado = ($categoria->id == $model->id_categoria) ? "selected" : "";
+                        for ($i = 0; $i < $total_categorias; $i++) :
+
+                            $selecionado = "";
+
+                            if (isset($dados_produto->id)) {
+                                $selecionado = ($listar_categorias[$i]->id == $dados_produto->id_categoria) ? "selected" : "";
+                            }
+
                         ?>
-
-                            <option value="<?= $categoria->id ?>" <?= $selecinado ?>>
-                                <?= $categoria->descricao  ?>
+                            <option value="<?= $listar_categorias[$i]->id ?>" <?= $selecionado ?>>
+                                <?= $listar_categorias[$i]->descricao ?>
                             </option>
-
-                        <?php endforeach ?>
+                        <?php endfor ?>
 
                     </select>
                 </div>
+
+
+
 
                 <div class="form-group col-md-6">
                     <label for="id_marca">Marca:</label>
                     <select id="id_marca" name="id_marca" class="form-control">
-                        <option value="">Selecione a marca</option>
+                        <option>Selecione a marca</option>
 
-                        <?php foreach ($model->lista_marcas as $marca) :
+                        <?php for ($i = 0; $i < $total_marcas; $i++) :
 
-                            $selecinado = ($marca->id == $model->id_marca) ? "selected" : "";
+                            if (isset($dados_produto->id))
+
+                                $selecionado = ($listar_marcas[$i]->id == $dados_produto->id_marca) ? "selected" : "";
 
                         ?>
-                            <option value="<?= $marca->id ?>" <?= $selecinado ?>>
-                                <?= $marca->descricao  ?>
+                            <option value="<?= $listar_marcas[$i]->id ?>" <?= $selecionado ?>>
+                                <?= $listar_marcas[$i]->descricao ?>
                             </option>
-                        <?php endforeach ?>
+                        <?php endfor ?>
                     </select>
 
                 </div>
+
             </div>
 
-            <?php if ($model->id !== null) : ?>
-                <input name="id" type="hidden" value="<?= $model->id ?>" />
+            <?php if (isset($dados_produto)) : ?>
+                <input name="id" type="hidden" value="<?= $dados_produto->id ?>" />
 
-                <a class="btn btn-outline-danger" href="/produto/excluir?id=<?= $model->id ?>">
+
+                <a href="/produto/excluir?excluir=true&id=<?= $dados_produto->id ?>" class="btn btn-outline-danger">
                     Excluir
                 </a>
+            <?php endif; ?>
 
-            <?php endif ?>
 
             <button type="submit" class="btn btn-outline-success">Salvar</button>
             <a href="/produto/listar" type="btn" class="btn btn-outline-primary">Voltar</a>
-
         </form>
     </main>
-
 
     <?php include PATH_VIEW . 'includes/rodape.php' ?>
     <?php include PATH_VIEW . 'includes/js_config.php' ?>

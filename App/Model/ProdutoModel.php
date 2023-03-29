@@ -2,7 +2,7 @@
 
 namespace App\Model;
 
-use App\DAO\{ ProdutoDAO, CategoriaDAO, MarcaDAO };
+use App\DAO\{ProdutoDAO, CategoriaDAO, MarcaDAO};
 use Exception;
 
 class ProdutoModel extends Model
@@ -17,10 +17,6 @@ class ProdutoModel extends Model
 
     public $lista_categorias = array();
     public $lista_marcas = array();
-
-
-    
-
 
 
     public function setId($_id)
@@ -76,24 +72,13 @@ class ProdutoModel extends Model
     }
 
 
-
-
-
-
-
-
-    
-
-
     public function delete(int $id)
     {
-        try 
-        {
+        try {
             $dao = new ProdutoDAO();
 
-            if(!$dao->delete($id))
-                throw new Exception("Não foi possível deletar o produto.");            
-                
+            if (!$dao->delete($id))
+                throw new Exception("Não foi possível deletar o produto.");
         } catch (Exception $e) {
 
             $this->validaton_erros[] = $e->getMessage();
@@ -104,17 +89,15 @@ class ProdutoModel extends Model
 
     public function getById(int $id)
     {
-        try 
-        {
+        try {
             $dao = new ProdutoDAO();
 
             $dados_produto = $dao->getById($id);
 
-            if(is_object($dados_produto))
+            if (is_object($dados_produto))
                 return $dados_produto;
-            else 
+            else
                 throw new Exception("Produto não encontrado.");
-
         } catch (Exception $e) {
 
             $this->validaton_erros[] = $e->getMessage();
@@ -147,31 +130,28 @@ class ProdutoModel extends Model
 
     public function getAll()
     {
-        try 
-        {
+        try {
             $dao = new ProdutoDAO();
 
             $arr_produtos = $dao->getAllRows();
 
-            if(is_array($arr_produtos))
+            if (is_array($arr_produtos))
                 return $arr_produtos;
-            else 
+            else
                 throw new Exception("Erro ao obter a lista de produtos.");
-
         } catch (Exception $e) {
 
             $this->validaton_erros[] = $e->getMessage();
 
             throw new Exception("Erro ao obter a lista de produtos.");
         }
-
     }
 
 
     public function getAllCategorias()
     {
         $categoria_dao = new CategoriaDAO();
-        
+
         return $categoria_dao->getAllRows();
     }
 
@@ -181,10 +161,4 @@ class ProdutoModel extends Model
 
         return $marca_dao->getAllRows();
     }
-
-
-
-
-
-
 }

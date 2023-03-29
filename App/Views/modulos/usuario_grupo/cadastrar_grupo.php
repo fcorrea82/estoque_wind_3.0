@@ -29,19 +29,45 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-3">
-                            <input id="cadastrar" name="cadastrar" type="checkbox" <?= ($dados_grupo->cadastrar == 'S') ? 'checked' : '' ?> />
+
+                            <?php if (isset($dados_grupo) && $dados_grupo->cadastrar == 'S') : ?>
+                                <input id="cadastrar" name="cadastrar" type="checkbox" checked />
+                            <?php else : ?>
+                                <input id="cadastrar" name="cadastrar" type="checkbox" />
+                            <?php endif; ?>
                             <label for="cadastrar">Cadastrar </label>
                         </div>
+
                         <div class="form-group col-md-3">
-                            <input id="editar" name="editar" type="checkbox" <?= ($dados_grupo->editar == 'S') ? 'checked' : '' ?> />
+
+                            <?php if (isset($dados_grupo) && $dados_grupo->editar == 'S') : ?>
+                                <input id="editar" name="editar" type="checkbox" checked />
+                            <?php else : ?>
+                                <input id="editar" name="editar" type="checkbox" />
+                            <?php endif; ?>
+
                             <label for="editar">Editar </label>
                         </div>
+
                         <div class="form-group col-md-3">
-                            <input id="listar" name="listar" type="checkbox" <?= ($dados_grupo->listar == 'S') ? 'checked' : '' ?> />
+
+                            <?php if (isset($dados_grupo) && $dados_grupo->listar == 'S') : ?>
+                                <input id="listar" name="listar" type="checkbox" checked />
+                            <?php else : ?>
+                                <input id="listar" name="listar" type="checkbox" />
+                            <?php endif; ?>
+
+
                             <label for="listar">Listar </label>
                         </div>
                         <div class="form-group col-md-3">
-                            <input id="excluir" name="excluir" type="checkbox" <?= ($dados_grupo->excluir == 'S') ? 'checked' : '' ?> />
+
+                            <?php if (isset($dados_grupo) && $dados_grupo->excluir == 'S') : ?>
+                                <input id="excluir" name="excluir" type="checkbox" checked />
+                            <?php else : ?>
+                                <input id="excluir" name="excluir" type="checkbox" />
+                            <?php endif; ?>
+
                             <label for="excluir">Excluir </label>
                         </div>
                     </div>

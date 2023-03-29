@@ -27,6 +27,9 @@
                         <th scope="col">Id</th>
                         <th scope="col-lg-9">Descrição:</th>
                         <th scope="col">Cadastrar</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Listar</th>
+                        <th scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +43,9 @@
                             <td> <?= $g->id ?> </td>
                             <td> <?= $g->descricao  ?> </td>
                             <td> <?= $g->cadastrar  ?> </td>
+                            <td> <?= $g->editar  ?> </td>
+                            <td> <?= $g->listar  ?> </td>
+                            <td> <?= $g->excluir  ?> </td>
                         </tr>
                     <?php endforeach ?>
                 </tbody>

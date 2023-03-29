@@ -3,61 +3,20 @@
 namespace App\Controller;
 
 use App\DAO\{ProdutoDAO, CategoriaDAO, MarcaDAO};
-use App\Model\ProdutoModel;
-use Exception;
 
 class ProdutoController extends Controller
 {
 
-    public static function index()
+    public static function cadastrar()
     {
         parent::isProtected();
+        $categoria_dao = new CategoriaDAO();
+        $listar_categorias = $categoria_dao->getAllRows();
+        $total_categorias = count($listar_categorias);
 
-        $arr_produtos = array();
-
-        try {
-
-            $model = new ProdutoModel();
-
-            $arr_produtos = $model->getAll();
-
-        } catch (Exception $e) {
-
-           // echo $e->getMessage();
-
-        }
-
-        include PATH_VIEW . 'modulos/produto/listar_produtos.php';
-    }
-
-    public static function ver()
-    {
-        parent::isProtected();
-
-        try {
-            if (isset($_GET['id'])) {
-                $model = new ProdutoModel();
-
-                $dados = $model->getById((int) $_GET['id']);
-
-                self::cadastrar($dados);
-            } else {
-                header("location: /produto");
-            }
-        } catch (Exception $e) {
-
-            self::cadastrar($model);
-        }
-    }
-
-    public static function cadastrar(ProdutoModel $_model = null)
-    {
-        parent::isProtected();
-
-        $model = ($_model == null) ? new ProdutoModel() : $_model;
-
-        $model->lista_categorias = $model->getAllCategorias();
-        $model->lista_marcas = $model->getAllMarcas();
+        $marca_dao = new MarcaDAO();
+        $listar_marcas = $marca_dao->getAllRows();
+        $total_marcas = count($listar_marcas);
 
         include PATH_VIEW . 'modulos/produto/cadastrar_produto.php';
     }
@@ -66,41 +25,60 @@ class ProdutoController extends Controller
     {
         parent::isProtected();
 
-        try {
-            $model = new ProdutoModel();
+        $produto_dao = new ProdutoDAO();
 
-            $model->setId(isset($_POST['id']) ? $_POST['id'] : null);
-            $model->setDescricao($_POST["descricao"]);
-            $model->setPreco($_POST["preco"]);
-            $model->setCategoria((int) $_POST["id_categoria"]);
-            $model->setMarca((int) $_POST["id_marca"]);
+        $dados_para_salvar = array(
+            'id_marca' => $_POST["id_marca"],
+            'id_categoria' => $_POST["id_categoria"],
+            'descricao' => $_POST["descricao"],
+            'preco' => $_POST["preco"]
+        );
 
-            $model->save();
+        if (isset($_POST['id'])) {
 
-            header("Location: /produto");
-        } catch (Exception $e) {
+            $dados_para_salvar['id'] = $_POST["id"];
 
-            self::cadastrar($model);
+            $produto_dao->update($dados_para_salvar);
+        } else {
+            $produto_dao->insert($dados_para_salvar);
         }
+
+        header("Location:/produto/listar");
     }
 
     public static function excluir()
     {
         parent::isProtected();
-
         if (isset($_GET['id'])) {
-            try {
+            $produto_dao = new ProdutoDAO();
+            $produto_dao->delete($_GET['id']);
 
-                $model = new ProdutoModel();
-
-                $model->delete((int) $_GET['id']);
-
-                header("Location: /produto");
-            } catch (Exception $e) {
-
-                self::cadastrar($model);
-            }
+            header("Location: /produto/listar");
         } else
-            header("Location: /produto ");
+            header("Location: /produto/listar");
+    }
+
+    //Index da Página
+    public static function listarProdutos()
+    {
+        parent::isProtected();
+        $produto_dao = new ProdutoDAO();
+        $listar_produtos = $produto_dao->getAllRows();
+        $total_produtos = count($listar_produtos);
+
+        include PATH_VIEW . 'modulos/produto/listar_produtos.php';
+    }
+
+    public static function ver()
+    {
+        parent::isProtected();
+        if (isset($_GET['id'])) {
+
+            $produto_dao = new ProdutoDAO();
+            $dados_produto = $produto_dao->getById($_GET['id']);
+
+            include PATH_VIEW . 'modulos/produto/cadastrar_produto.php';
+        } else
+            header("Location: /produto/listar");
     }
 }

@@ -47,6 +47,7 @@
                         <label for="usuario">Usuário: </label>
                         <input name="usuario" class="form-control" value="<?= isset($dados_usuario) ? $dados_usuario->usuario : "" ?>" type="text" required />
                     </div>
+
                     <div class="form-group col-md-6">
                         <label for="id_grupo">Grupo: </label>
 
@@ -72,6 +73,7 @@
                         </select>
 
                     </div>
+
 
 
                 </div>
