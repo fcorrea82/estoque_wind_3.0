@@ -24,13 +24,25 @@
                 </div>
 
                 <?php if (isset($dados_marca)) : ?>
-                    <input name="id" type="hidden" value="<?= $dados_marca->id ?>" />
+                    <form action="/marca/excluir" method="POST">
+                        <div class="btn-group" role="group">
+                            <input name="id" type="hidden" value="<?= $dados_marca->id ?>" />
+                            <button class="btn btn-outline-danger mr-1" type="button" onclick="confirmarExclusao()">Excluir</button>
+                    </form>
+
+                    <script>
+                        function confirmarExclusao() {
+                            if (confirm("Tem certeza de que deseja excluir esta marca?")) {
+                                // redirecionar para a página de exclusão
+                                window.location.href = "/marca/excluir?id=<?= $dados_marca->id ?>";
+                            }
+                        }
+                    </script>
 
 
-                    <a href="/marca/excluir?excluir=true&id=<?= $dados_marca->id ?>" class="btn btn-outline-danger">
-                        Excluir
-                    </a>
-                <?php endif; ?>
+                <?php endif ?>
+
+
 
                 <button type="submit" class="btn btn-outline-success">Salvar</button>
                 <a href="/marca/listar" type="btn" class="btn btn-outline-primary">Voltar</a>

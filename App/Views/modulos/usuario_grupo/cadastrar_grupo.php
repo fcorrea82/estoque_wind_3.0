@@ -78,14 +78,26 @@
 
 
 
-
-
                 <?php if (isset($dados_grupo)) : ?>
-                    <input name="id" type="hidden" value="<?= $dados_grupo->id ?>" />
-                    <a class="btn btn-outline-danger" href="/usuario/grupo/excluir?id=<?= $dados_grupo->id ?>">
-                        Excluir
-                    </a>
+                    <form action="/usuario/grupo/excluir" method="POST">
+                        <div class="btn-group" role="group">
+                            <input name="id" type="hidden" value="<?= $dados_grupo->id ?>" />
+                            <button class="btn btn-outline-danger mr-1" type="button" onclick="confirmarExclusao()">Excluir</button>
+                    </form>
+
+                    <script>
+                        function confirmarExclusao() {
+                            if (confirm("Tem certeza de que deseja excluir este grupo?")) {
+                                // redirecionar para a página de exclusão
+                                window.location.href = "/usuario/grupo/excluir?id=<?= $dados_grupo->id ?>";
+                            }
+                        }
+                    </script>
+
+
                 <?php endif ?>
+
+
 
                 <button type="submit" class="btn btn-outline-success">Salvar</button>
                 <a href="/usuario/grupo" type="btn" class="btn btn-outline-primary">Voltar</a>

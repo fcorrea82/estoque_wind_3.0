@@ -85,13 +85,25 @@
             </div>
 
             <?php if (isset($dados_produto)) : ?>
-                <input name="id" type="hidden" value="<?= $dados_produto->id ?>" />
+                <form action="/produto/excluir" method="POST">
+                    <div class="btn-group" role="group">
+                        <input name="id" type="hidden" value="<?= $dados_produto->id ?>" />
+                        <button class="btn btn-outline-danger mr-1" type="button" onclick="confirmarExclusao()">Excluir</button>
+                </form>
+
+                <script>
+                    function confirmarExclusao() {
+                        if (confirm("Tem certeza de que deseja excluir este produto?")) {
+                            // redirecionar para a página de exclusão
+                            window.location.href = "/produto/excluir?id=<?= $dados_produto->id ?>";
+                        }
+                    }
+                </script>
 
 
-                <a href="/produto/excluir?excluir=true&id=<?= $dados_produto->id ?>" class="btn btn-outline-danger">
-                    Excluir
-                </a>
-            <?php endif; ?>
+            <?php endif ?>
+
+
 
 
             <button type="submit" class="btn btn-outline-success">Salvar</button>

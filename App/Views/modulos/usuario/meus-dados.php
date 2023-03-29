@@ -75,7 +75,8 @@
 
 
 
-                <button type="submit" class="btn btn-success">Salvar</button>
+                <button type="submit" class="btn btn-outline-success">Salvar</button>
+                <a href="/" type="btn" class="btn btn-outline-primary">Voltar</a>
             </form>
         </main>
 

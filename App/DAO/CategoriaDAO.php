@@ -2,10 +2,11 @@
 
 namespace App\DAO;
 
-class CategoriaDAO extends DAO {
+class CategoriaDAO extends DAO
+{
 
     /**
-     * Cria uma novo objeto para fazer o CRUD de Categorias
+     * Cria uma novo objeto para fazer o CRUD de Marcas.
      */
     public function __construct()
     {
@@ -14,23 +15,25 @@ class CategoriaDAO extends DAO {
 
 
     /**
-     * Retorna um registro específico da tabela Categoria
+     * Retorna um registro específico da tabela Marca.
      */
-    public function getById($id) {
+    public function getById($id)
+    {
 
         $stmt = $this->conexao->prepare("SELECT * FROM categoria WHERE id = ?");
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
-        return $stmt->fetchObject();            
+        return $stmt->fetchObject();
     }
 
 
     /**
-     * Retorna todos os registros da tabela Categoria.
+     * Retorna todos os registros da tabela Marca.
      */
-    public function getAllRows() {
-        
+    public function getAllRows()
+    {
+
         $stmt = $this->conexao->prepare("SELECT * FROM categoria");
         $stmt->execute();
 
@@ -40,12 +43,13 @@ class CategoriaDAO extends DAO {
 
 
     /**
-     * Método que insere uma categoria na tabela Categoria.
+     * Método que insere uma categoria na tabela Marca.
      */
-    public function insert($dados_categoria) {
+    public function insert($dados_categoria)
+    {
 
         $sql = "INSERT INTO categoria (descricao) VALUES (?)";
-        
+
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $dados_categoria['descricao']);
         $stmt->execute();
@@ -53,12 +57,13 @@ class CategoriaDAO extends DAO {
 
 
     /**
-     * Atualiza um registro na tabela Categoria.
+     * Atualiza um registro na tabela Marca.
      */
-    public function update($dados_categoria) {
+    public function update($dados_categoria)
+    {
 
         $sql = "UPDATE categoria SET descricao = ? WHERE id = ? ";
-        
+
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $dados_categoria['descricao']);
         $stmt->bindValue(2, $dados_categoria['id']);
@@ -67,15 +72,15 @@ class CategoriaDAO extends DAO {
 
 
     /**
-     * Remove um registro da tabela Categoria.
+     * Remove um registro da tabela Marca.
      */
-    public function delete($id) {
+    public function delete($id)
+    {
 
         $sql = "DELETE FROM categoria WHERE id = ? ";
-        
+
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
     }
 }
-
