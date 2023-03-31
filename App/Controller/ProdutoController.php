@@ -77,6 +77,14 @@ class ProdutoController extends Controller
             $produto_dao = new ProdutoDAO();
             $dados_produto = $produto_dao->getById($_GET['id']);
 
+            $categoria_dao = new CategoriaDAO();
+            $listar_categorias = $categoria_dao->getAllRows();
+            $total_categorias = count($listar_categorias);
+
+            $marca_dao = new MarcaDAO();
+            $listar_marcas = $marca_dao->getAllRows();
+            $total_marcas = count($listar_marcas);
+
             include PATH_VIEW . 'modulos/produto/cadastrar_produto.php';
         } else
             header("Location: /produto/listar");
