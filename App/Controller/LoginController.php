@@ -6,7 +6,8 @@ use App\DAO\LoginDAO;
 use Error;
 use Exception;
 
-class LoginController extends Controller {
+class LoginController extends Controller
+{
 
     public static function login()
     {
@@ -15,18 +16,18 @@ class LoginController extends Controller {
         include PATH_VIEW . 'login.php';
     }
 
-    public static function esqueciSenha() 
+    public static function esqueciSenha()
     {
 
         include PATH_VIEW . 'esqueci-senha.php';
     }
 
 
-    public static function enviarNovaSenha() 
+    public static function enviarNovaSenha()
     {
         try {
 
-        
+
             $nova_senha = uniqid();
             $email      = $_POST['email'];
 
@@ -42,14 +43,13 @@ class LoginController extends Controller {
             $saida_email = mail($email, $assunto, $mensagem, "From: teste.sendmail@metoda.com.br");
 
 
-            if(!$saida_email)
-            {
-               // $teste = "Senha gerada: " . $nova_senha;
-
+            if (!$saida_email) {
+                $teste = "Senha gerada: " . $nova_senha;
+                echo "senha gerada:" . $nova_senha;
                 throw new Exception("Desculpe, ocorreu um erro ao enviar o email, tente novamente mais tarde.");
             }
-        } catch(Exception $e) {
-            
+        } catch (Exception $e) {
+
             $retorno = $e->getMessage();
         }
 
@@ -66,23 +66,21 @@ class LoginController extends Controller {
 
         $resultado = $login_dao->getUserByUserAndPass($usuario, $senha);
 
-        if($resultado !== false)
-        {
+        if ($resultado !== false) {
             $_SESSION["usuario_logado"] = (array) $resultado;
 
-            if(isset($_POST['remember']))
-                self::remember($usuario);                                    
+            if (isset($_POST['remember']))
+                self::remember($usuario);
 
             //var_dump($_SESSION["usuario_logado"]);
 
             header("Location: /");
-
-        } else 
-            header("Location: /login?fail=true");        
+        } else
+            header("Location: /login?fail=true");
     }
 
 
-    private static function remember($user) 
+    private static function remember($user)
     {
 
         $validade = strtotime("+1 month");
@@ -90,7 +88,8 @@ class LoginController extends Controller {
         setcookie("sisgen_user", $user, $validade, "/", "", false, true);
     }
 
-    private static function forget() {
+    private static function forget()
+    {
 
         $validade = time() - 3600;
 
@@ -102,13 +101,13 @@ class LoginController extends Controller {
     public static function sair()
     {
         self::forget();
-        
+
         unset($_SESSION["usuario_logado"]);
 
         parent::isProtected();
     }
 
-    
+
     public static function getNameOfCurrentUser()
     {
         return $_SESSION['usuario_logado']['nome'];
@@ -124,10 +123,9 @@ class LoginController extends Controller {
         $_SESSION['usuario_logado']['nome'] = $name;
     }
 
-    
+
     public static function getIdOfCurrentUser()
     {
         return $_SESSION['usuario_logado']['id'];
     }
-
 }
