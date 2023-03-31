@@ -70,6 +70,7 @@ class UsuarioDAO extends DAO
         $stmt->bindValue(5, $dados_usuario['senha']);
         $stmt->bindValue(6, $dados_usuario['id']);
         $stmt->execute();
+        return $stmt->fetchObject(Usuario::class);
     }
 
     /**

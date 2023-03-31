@@ -2,19 +2,18 @@
 
 namespace App\Controller;
 
-abstract class Controller {
+abstract class Controller
+{
 
-    protected static function isProtected() 
+    protected static function isProtected()
     {
 
-        if(!isset($_SESSION["usuario_logado"]))
+        if (!isset($_SESSION["usuario_logado"]))
             header("Location: /login");
 
-            
-        if(self::hasPermission()) 
-        {
 
-        }   
+        if (self::hasPermission()) {
+        }
     }
 
     private static function hasPermission()

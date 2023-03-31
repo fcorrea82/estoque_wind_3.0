@@ -13,8 +13,8 @@
             <div class="row mb-3">
                 <div class="col-md-9">
                     <h1>
-                        SISGEN
-                        <small>Sistema de Gestão</small>
+                        SIR 3.0 -
+                        <small>Sistema de Inventário Restoque</small>
                     </h1>
                 </div>
 
@@ -26,12 +26,12 @@
 
                     <form method="post" action="/enviar-nova-senha">
 
-                        <?php if(isset($retorno)): ?>
-                        <div class="alert alert-primary" role="alert">
-                            <?=  $retorno ?>
-                        </div>
+                        <?php if (isset($retorno)) : ?>
+                            <div class="alert alert-primary" role="alert">
+                                <?= $retorno ?>
+                            </div>
                         <?php endif ?>
-                        
+
 
                         <div class="form-group">
                             <label for="email">E-mail: </label>
@@ -50,10 +50,10 @@
 
                 <div class="text-center">
                     <p>
-                        SISGEN - Sistema de Gestão - Todos os direitos reservados.
+                        Sistema de Inventário Restoque 3.0 - Todos os direitos reservados.
                     </p>
                     <p>
-                        Programação Web com @prof.tiagotas
+                        Programação Web com @Flavio Correa
                     </p>
                 </div>
 
