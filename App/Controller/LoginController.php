@@ -45,8 +45,8 @@ class LoginController extends Controller
 
             if (!$saida_email) {
                 $teste = "Senha gerada: " . $nova_senha;
-                echo "senha gerada:" . $nova_senha;
-                throw new Exception("Desculpe, ocorreu um erro ao enviar o email, tente novamente mais tarde.");
+                //  echo "senha gerada:" . $nova_senha;
+                throw new Exception("Desculpe, ocorreu um erro ao enviar o email, tente novamente mais tarde." . $nova_senha);
             }
         } catch (Exception $e) {
 
