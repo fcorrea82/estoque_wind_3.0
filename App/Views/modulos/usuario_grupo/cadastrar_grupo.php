@@ -99,7 +99,7 @@
 
 
 
-                <button type="submit" class="btn btn-outline-success">Salvar</button>
+                <button type="submit" class="btn btn-outline-success mr-1">Salvar</button>
                 <a href="/usuario/grupo" type="btn" class="btn btn-outline-primary">Voltar</a>
             </form>
         </main>

@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <label for="descricao"> Descrição (Nome) do produto: </label>
-                <input name="descricao" id="descricao" class="form-control" type="text" value="<?= isset($dados_produto) ? $dados_produto->descricao : "" ?>" />
+                <input name="descricao" id="descricao" class="form-control" type="text" required value="<?= isset($dados_produto) ? $dados_produto->descricao : "" ?>" />
 
             </div>
 
@@ -37,25 +37,20 @@
 
                 <div class="form-group col-md-6">
                     <label for="id_categoria">Categoria: </label>
-                    <select id="id_categoria" name="id_categoria" class="form-control">
-                        <option>Selecione a categoria</option>
+                    <select id="id_categoria" name="id_categoria" class="form-control" required>
+                        <option value="" selected>Selecione a categoria</option>
 
                         <?php
-
                         for ($i = 0; $i < $total_categorias; $i++) :
-
                             $selecionado = "";
-
                             if (isset($dados_produto->id)) {
                                 $selecionado = ($listar_categorias[$i]->id == $dados_produto->id_categoria) ? "selected" : "";
                             }
-
                         ?>
                             <option value="<?= $listar_categorias[$i]->id ?>" <?= $selecionado ?>>
                                 <?= $listar_categorias[$i]->descricao ?>
                             </option>
                         <?php endfor ?>
-
                     </select>
                 </div>
 
@@ -64,22 +59,19 @@
 
                 <div class="form-group col-md-6">
                     <label for="id_marca">Marca:</label>
-                    <select id="id_marca" name="id_marca" class="form-control">
-                        <option>Selecione a marca</option>
-
+                    <select id="id_marca" name="id_marca" class="form-control" required>
+                        <option value="" selected>Selecione a marca</option>
                         <?php for ($i = 0; $i < $total_marcas; $i++) :
-
-                            if (isset($dados_produto->id))
-
+                            $selecionado = "";
+                            if (isset($dados_produto->id)) {
                                 $selecionado = ($listar_marcas[$i]->id == $dados_produto->id_marca) ? "selected" : "";
-
+                            }
                         ?>
                             <option value="<?= $listar_marcas[$i]->id ?>" <?= $selecionado ?>>
                                 <?= $listar_marcas[$i]->descricao ?>
                             </option>
                         <?php endfor ?>
                     </select>
-
                 </div>
 
             </div>
@@ -106,7 +98,7 @@
 
 
 
-            <button type="submit" class="btn btn-outline-success">Salvar</button>
+            <button type="submit" class="btn btn-outline-success mr-1">Salvar</button>
             <a href="/produto/listar" type="btn" class="btn btn-outline-primary">Voltar</a>
         </form>
     </main>

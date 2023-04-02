@@ -48,6 +48,20 @@
                         <label for="email">E-mail: </label>
                         <input name="email" class="form-control" value="<?= $meus_dados->email ?>" type="email" required />
                     </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="usuario">Usuario: </label>
+                        <input readonly name="usuario" class="form-control" value="<?= $meus_dados->usuario ?>" type="text" required />
+                    </div>
+
+                    <!-- teste inicio -->
+
+                    <div class="form-group col-md-6">
+                        <label for="id_grupo">Grupo: </label>
+                        <input name="id_grupo" class="form-control" value="<?= $meus_dados->id_grupo ?>" type="text" required />
+                    </div>
+
+                    <!-- teste fim -->
                 </div>
 
                 <fieldset class="border rounded p-3 mb-3">

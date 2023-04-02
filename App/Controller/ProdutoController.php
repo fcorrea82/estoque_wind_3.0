@@ -66,6 +66,14 @@ class ProdutoController extends Controller
         $listar_produtos = $produto_dao->getAllRows();
         $total_produtos = count($listar_produtos);
 
+        $categoria_dao = new CategoriaDAO();
+        $listar_categorias = $categoria_dao->getAllRows();
+        $total_categorias = count($listar_categorias);
+
+        $marca_dao = new MarcaDAO();
+        $listar_marcas = $marca_dao->getAllRows();
+        $total_marcas = count($listar_marcas);
+
         include PATH_VIEW . 'modulos/produto/listar_produtos.php';
     }
 

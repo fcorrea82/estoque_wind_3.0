@@ -4,21 +4,20 @@ namespace App\DAO;
 
 class UsuarioDAO extends DAO
 {
-    /**
-     * Cria uma novo objeto para fazer o CRUD dos Usuário
-     */
+
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Retorna um registro específico da tabela Grupo de Usuário
-     */
     public function getById($id)
     {
-
-        $stmt = $this->conexao->prepare("SELECT * FROM usuarios WHERE id = ?");
+        $stmt = $this->conexao->prepare("
+            SELECT u.*, g.descricao AS grupo_descricao 
+            FROM usuarios u 
+            LEFT JOIN grupos g ON u.id_grupo = g.id 
+            WHERE u.id = ?
+        ");
         $stmt->bindValue(1, $id);
         $stmt->execute();
 
@@ -26,15 +25,12 @@ class UsuarioDAO extends DAO
     }
 
 
-    /**
-     * Retorna todos os registros da tabela
-     * Select usada para retornar os valores no listar_usuarios.php 
-     */
     public function getAllRows()
     {
-        $sql = "SELECT u.id, u.nome, u.email, g.descricao AS grupo, u.usuario 
+        $sql = "SELECT u.id, u.nome, u.email, u.id_grupo, u.usuario, g.descricao AS grupo 
                 FROM usuarios u
                 JOIN grupos g ON (g.id = u.id_grupo)";
+
 
         $stmt = $this->conexao->prepare($sql);
         $stmt->execute();
@@ -42,9 +38,6 @@ class UsuarioDAO extends DAO
         return $stmt->fetchAll(\PDO::FETCH_CLASS);
     }
 
-    /**
-     * Método que insere um usuario na tabela de Usuarios.
-     */
     public function insert($dados)
     {
         $sql = "INSERT INTO usuarios (nome, email, usuario, id_grupo) VALUES (?, ?, ?, ?)";
@@ -73,28 +66,19 @@ class UsuarioDAO extends DAO
         return $stmt->fetchObject();
     }
 
-    /**
-     * Remove um registro da tabela Usuarios.
-     */
     public function delete($id)
     {
         $sql = "DELETE FROM usuarios WHERE id = ? ";
-
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
     }
 
-
-    /**
-     * Retorna um usuário específico
-     */
     public function getMyUserById($id)
     {
         $stmt = $this->conexao->prepare("SELECT id, nome, usuario, email FROM usuarios WHERE id = ?");
         $stmt->bindValue(1, $id);
         $stmt->execute();
-
         return $stmt->fetchObject();
     }
 
@@ -104,7 +88,6 @@ class UsuarioDAO extends DAO
         $stmt->bindValue(1, $id);
         $stmt->bindValue(2, $senha);
         $stmt->execute();
-
         return $stmt->fetchObject();
     }
 
@@ -117,9 +100,6 @@ class UsuarioDAO extends DAO
 
         $dados = $stmt->fetchObject();
 
-        // Caso retorne um id, verificar se o id pertence ao proprio usuário que
-        // está sendo editado. Se pertencer a outro usuário, acusará email já
-        // vinculado a outro usuário.
         if (is_object($dados)) {
             if ($id_usuario == $dados->id)
                 return false;
@@ -138,9 +118,6 @@ class UsuarioDAO extends DAO
 
         $dados = $stmt->fetchObject();
 
-        // Caso retorne um id, verificar se o id pertence ao proprio usuário que
-        // está sendo editado. Se pertencer a outro usuário, acusará que campo usuario já
-        // é vinculado a outro usuário.
         if (is_object($dados)) {
             if ($id_usuario == $dados->id)
                 return false;

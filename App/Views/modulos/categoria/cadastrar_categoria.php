@@ -19,7 +19,7 @@
 
                 <div class="form-group">
                     <label>Descricao (Nome) da categoria:
-                        <input name="descricao" class="form-control" value="<?= isset($dados_categoria) ? $dados_categoria->descricao : "" ?>" type="text" />
+                        <input name="descricao" class="form-control" required value="<?= isset($dados_categoria) ? $dados_categoria->descricao : "" ?>" type="text" />
                     </label>
                 </div>
 
@@ -44,7 +44,7 @@
 
 
 
-                <button type="submit" class="btn btn-outline-success">Salvar</button>
+                <button type="submit" class="btn btn-outline-success mr-1">Salvar</button>
                 <a href="/categoria/listar" type="btn" class="btn btn-outline-primary">Voltar</a>
             </form>
         </main>

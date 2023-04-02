@@ -2,7 +2,8 @@
 
 namespace App\DAO;
 
-class LoginDAO extends DAO {
+class LoginDAO extends DAO
+{
 
     /**
      * Cria uma novo objeto para fazer o CRUD de Categorias
@@ -15,14 +16,14 @@ class LoginDAO extends DAO {
     public function setNewPassWordForUserByEmail($email, $newpassword)
     {
         $sql = "UPDATE usuarios SET senha=sha1(?) WHERE email=?";
-        
+
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $newpassword);
         $stmt->bindValue(2, $email);
         $stmt->execute();
     }
 
-    public function getUserByUserAndPass($usuario, $senha) 
+    public function getUserByUserAndPass($usuario, $senha)
     {
         $sql = "SELECT u.id, u.nome, u.id_grupo, 
                        g.descricao AS grupo, g.cadastrar, g.editar, g.listar, g.excluir
@@ -37,9 +38,9 @@ class LoginDAO extends DAO {
 
         $dados_usuario = $stmt->fetchObject();
 
-       /* if(is_object($dados_usuario))
+        /* if(is_object($dados_usuario))
             $dados_usuario->permissoes_grupo = $this->getGroupPermissionsById($dados_usuario->id_grupo);*/
 
-        return $dados_usuario;            
+        return $dados_usuario;
     }
 }
