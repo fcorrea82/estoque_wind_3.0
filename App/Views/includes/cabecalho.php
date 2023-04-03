@@ -6,6 +6,10 @@ $usuario = LoginController::getNameOfCurrentUser();
 $grupo   = LoginController::getGrupOfCurrentUser();
 
 ?>
+
+<head>
+    <meta charset="utf-8">
+</head>
 <header class="container mt-3">
     <div class="row mb-3">
 
@@ -568,7 +572,7 @@ $grupo   = LoginController::getGrupOfCurrentUser();
 
     </div>
 
-    <a class="js-scroll-top scroll-top btn btn-primary btn-sm hidden" href="#container" hidden>
+    <a class="js-scroll-top scroll-top fa fa-arrow-circle-up hidden" style="font-size:48px;color:blue" href="#container" hidden>
     </a>
 
 
