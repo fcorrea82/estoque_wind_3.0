@@ -170,8 +170,8 @@ $grupo   = LoginController::getGrupOfCurrentUser();
                                         <button class="dropdown-item dropdown-toggle" type="button">Pin Pads</button>
 
                                         <div class="dropdown-menu">
-                                            <button class="dropdown-item" type="button"><a href="#">Cadastrar</a></button>
-                                            <button class="dropdown-item" type="button"><a href="#">Listar</a></button>
+                                            <button class="dropdown-item" type="button"><a href="/pinpad/cadastrar">Cadastrar</a></button>
+                                            <button class="dropdown-item" type="button"><a href="/pinpad/listar">Listar</a></button>
                                         </div>
                                     </div>
 

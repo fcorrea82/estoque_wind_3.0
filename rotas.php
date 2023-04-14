@@ -7,7 +7,8 @@ use App\Controller\{
    CategoriaController,
    MarcaController,
    UsuarioController,
-   UsuarioGrupoController
+   UsuarioGrupoController,
+   PinpadController
 };
 
 
@@ -159,6 +160,29 @@ try {
 
       case '/marca/excluir':
          MarcaController::excluir();
+         break;
+
+         //rotas para trabalhar com pinpad
+
+         //Rotas para trabalhar com categorias
+      case '/pinpad/listar':
+         PinpadController::listarPinpads();
+         break;
+
+      case '/pinpad/cadastrar':
+         PinpadController::cadastrar();
+         break;
+
+      case '/pinpad/salvar':
+         PinpadController::salvar();
+         break;
+
+      case '/pinpad/ver':
+         PinpadController::ver();
+         break;
+
+      case '/pinpad/excluir':
+         PinpadController::excluir();
          break;
 
 
