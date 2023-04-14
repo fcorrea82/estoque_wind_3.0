@@ -39,7 +39,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php for ($i <= 0; $i < $total_pinpads; $i++) : ?>
+					<?php for ($i = 0; $i < $total_pinpads; $i++) : ?>
 						<tr>
 							<th scope="row">
 								<a href="/pinpad/editar?id=<?= $listar_pinpads[$i]->id ?>">
