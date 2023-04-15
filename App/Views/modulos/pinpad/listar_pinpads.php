@@ -67,15 +67,15 @@
 						echo '<td width=50>';
 
 						echo '<div class="container">
-	<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+	<button type="button" class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
 		Ações
 	  </button>
 	  <ul class="dropdown-menu">
-		<li><a class="dropdown-item font-weight-bold" href="./pinpad/ver?id=<?= $listar_pinpads[$i]->id ?>' . $row['id'] . '">Mais Informações</a></li>
-		<li><a class="dropdown-item font-weight-bold" href="http://192.168.15.12:9011/updates/getnet_pinpad_update.php?id=' . $row['id'] . '">Atualizar Cadastro</a></li>
-		<li><a class="dropdown-item font-weight-bold" href="../updates_saida/getnet_pinpad_update_saida.php?id=' . $row['id'] . '">Saída</a></li>
-		<li><hr class="dropdown-divider"></li>
-		<li><a class="dropdown-item font-weight-bold" href="../delete/getnet_pinpad_delete.php?id=' . $row['id'] . '">Excluir</a></li>
+		<!--<li><a class="dropdown-item font-weight-bold" href="./pinpad/ver?id=<?= $listar_pinpads[$i]->id ?>' . $row['id'] . '">Mais Informações</a></li> -->
+		<li><a class="dropdown-item font-weight-bold" href="/pinpad/ver?id=' . $row['id'] . '">Atualizar Cadastro</a></li>
+		<!--<li><a class="dropdown-item font-weight-bold" href="../updates_saida/getnet_pinpad_update_saida.php?id=' . $row['id'] . '">Saída</a></li> -->
+		<!--<li><hr class="dropdown-divider"></li> -->
+		<!--<li><a class="dropdown-item font-weight-bold" href="../delete/getnet_pinpad_delete.php?id=' . $row['id'] . '">Excluir</a></li> -->
 	  </ul>
 	</div>';
 						echo '</td>';

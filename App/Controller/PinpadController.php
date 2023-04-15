@@ -120,7 +120,7 @@ class PinpadController extends Controller
             $marca_dao = new MarcaDAO();
             $dados_marca = $marca_dao->getById($_GET['id']);
 
-            include PATH_VIEW . 'modulos/pinpad/cadastrar_pinpad.php';
+            include PATH_VIEW . 'modulos/pinpad/update_pinpad.php';
         } else
             header("Location: /pinpad/listar");
     }
