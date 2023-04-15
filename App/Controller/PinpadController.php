@@ -147,4 +147,8 @@ class PinpadController extends Controller
         } else
             header("Location: /pinpad/listar");
     }
+
+    /**
+     * funções provisórias do estoque antigo
+     */
 }

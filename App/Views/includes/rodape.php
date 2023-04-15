@@ -2,7 +2,8 @@
 
     <div class="text-center">
         <p>
-            Sistema de Inventário Restoque 3.0 - Todos os direitos reservados.
+            Sistema de Inventário Restoque <?php include 'App/Controller/VersaoController.php';
+                                            echo versao_menu(); ?> - Todos os direitos reservados.
         </p>
         <p>
             Programação Web com @Flavio Correa

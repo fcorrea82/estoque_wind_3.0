@@ -2,13 +2,12 @@
 
 namespace App\DAO;
 
-
-
 /**
  * Classe que realiza busca de dados no banco para fornecer dados para o CRUD
  */
 class PinpadDAO extends DAO
 {
+
 
     /**
      * Cria um novo objeto para fazer o CRUD de Produto
@@ -132,5 +131,45 @@ class PinpadDAO extends DAO
         $stmt = $this->conexao->prepare($sql);
         $stmt->bindValue(1, $id);
         $stmt->execute();
+    }
+
+    /**
+     * Nova função de teste para listagem
+     */
+
+    public function listarPinpads()
+    {
+        $sql = "SELECT p.id, p.descricao, c.descricao AS categoria_descricao, m.descricao AS marca_descricao, pi.estoque, 
+                 pi.loja_entrada, date_format(pi.data_entrada,'%d/%m/%y') as data_entrada, pi.status_entrada, pi.loja_saida, 
+                 date_format(pi.data_saida, '%d/%m/%y') as data_saida, pi.status_saida, c.descricao AS categoria_descricao
+                 FROM produto AS p
+                 INNER JOIN categoria AS c ON p.id_categoria = c.id
+                 INNER JOIN marca AS m ON p.id_marca = m.id
+                 INNER JOIN pinpad AS pi ON p.id = pi.id_produto
+                 ORDER BY id DESC";
+
+        $stmt = $this->conexao->query($sql);
+        $resultados = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $resultados;
+    }
+
+    public function buscarPorId($id)
+    {
+        $sql = "SELECT p.id, p.descricao, c.descricao AS categoria_descricao, m.descricao AS marca_descricao, pi.estoque, 
+                pi.loja_entrada, date_format(pi.data_entrada,'%d/%m/%y') as data_entrada, pi.status_entrada, pi.loja_saida, 
+                date_format(pi.data_saida, '%d/%m/%y') as data_saida, pi.status_saida, c.descricao AS categoria_descricao
+                FROM produto AS p
+                INNER JOIN categoria AS c ON p.id_categoria = c.id
+                INNER JOIN marca AS m ON p.id_marca = m.id
+                INNER JOIN pinpad AS pi ON p.id = pi.id_produto
+                WHERE p.id = :id";
+
+        $stmt = $this->conexao->prepare($sql);
+        $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+        $resultado = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        return $resultado;
     }
 }

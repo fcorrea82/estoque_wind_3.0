@@ -153,17 +153,17 @@
 
                     <div class="form-group col-md-4">
                         <label for="loja_entrada"> Loja Entrada:</label>
-                        <input id="loja_entrada" name="loja_entrada" class="form-control" type="text" value="<?= isset($dados_pinpad) ? $dados_pinpad->loja_entrada : "" ?>" />
+                        <input required id="loja_entrada" name="loja_entrada" class="form-control" type="text" value="<?= isset($dados_pinpad) ? $dados_pinpad->loja_entrada : "" ?>" />
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="data_entrada"> Data Entrada:</label>
-                        <input id="data_entrada" name="data_entrada" class="form-control" type="date" value="<?= isset($dados_pinpad) ? $dados_pinpad->data_entrada : "" ?>" />
+                        <input required id="data_entrada" name="data_entrada" class="form-control" type="date" value="<?= isset($dados_pinpad) ? $dados_pinpad->data_entrada : "" ?>" />
                     </div>
 
                     <div class="form-group col-md-4">
                         <label for="status_entrada"> Status Entrada:</label>
-                        <input id="status_entrada" name="status_entrada" class="form-control" type="text" value="<?= isset($dados_pinpad) ? $dados_pinpad->status_entrada : "" ?>" />
+                        <input required id="status_entrada" name="status_entrada" class="form-control" type="text" value="<?= isset($dados_pinpad) ? $dados_pinpad->status_entrada : "" ?>" />
                     </div>
 
                 </div>
@@ -172,7 +172,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="serie"> Nº Série:</label>
-                        <input id="serie" name="serie" class="form-control" type="text" value="<?= isset($dados_pinpad) ? $dados_pinpad->serie : "" ?>" />
+                        <input required id="serie" name="serie" class="form-control" type="text" value="<?= isset($dados_pinpad) ? $dados_pinpad->serie : "" ?>" />
                     </div>
 
                     <div class="form-group col-md-6">
