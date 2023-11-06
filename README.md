@@ -13,6 +13,7 @@ Sistema específico para controle de inventário da empresa Restoque S.A com mod
 
 - Instalar o Xampp com Apache + PHP + MySQL
 - Realizar a importação do banco de dados dentro do PHPMyAdmin
+- Instalar Node.js versão 20.9.0
 
 # Documentação do Projeto
 
